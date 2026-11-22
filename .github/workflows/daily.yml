@@ -52,7 +52,9 @@ jobs:
             echo "没有变化"
           else
             git commit -m "简报 $(date +%Y-%m-%d)"
-            git push
+            # 两个运行可能同时改同一分支：先合并远端，冲突时保留本次新生成的内容
+            git pull --no-rebase -X ours --no-edit origin main || true
+            git push || (sleep 5 && git pull --no-rebase -X ours --no-edit origin main && git push)
           fi
 
       - name: 打包站点
