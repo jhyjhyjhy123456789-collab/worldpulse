@@ -868,7 +868,7 @@ def render_report(report_date: str, events: list[dict], meta: dict, audit: list[
 </header>
 {kpis}
 <nav>
-  <a href="#lead">今日要点</a><a href="#regions">地区态势</a>
+  <a href="#lead">今日要点</a><a href="#watch">专项监测</a><a href="#regions">地区态势</a>
   <a href="#topics">话题热度</a>
   <a href="#events">事件全景</a><a href="#compare">媒体对照</a>
   <a href="#audit">数据审计</a><a href="#method">方法与免责</a>
@@ -876,6 +876,10 @@ def render_report(report_date: str, events: list[dict], meta: dict, audit: list[
 
 <h2 id="lead">今日要点</h2>
 {lead_html}
+
+<h2 id="watch">专项监测</h2>
+<div class="note" style="margin-bottom:10px">对指定的公开募捐页面做独立监测，只记录项目进度与公开显示的捐款明细（新捐款按捐款 ID 判定），不含评论或推断。</div>
+<a href="fund.html" style="display:block;background:#161b22;border:1px solid #253040;border-radius:10px;padding:12px 14px;margin:8px 0;color:#58a6ff;text-decoration:none;font-size:14px">募捐页面监测 · 5 个境外项目 →<div style="color:#8b98a9;font-size:12px;margin-top:4px">项目进度、新增捐款、捐款人明细（公开信息，仅作事实记录）</div></a>
 
 <h2 id="regions">地区态势</h2>
 <div class="region">{''.join(region_cards) or '<div class="note">暂无数据</div>'}</div>
@@ -1005,14 +1009,20 @@ def notify_feishu(cfg, title, body):
     r.raise_for_status()
 
 
+def _cred(cfg, name, field, env_name) -> str:
+    """凭证优先取配置，其次取环境变量（云端用 GitHub Secrets 注入，避免明文入库）。"""
+    return (str((cfg["notify"].get(name) or {}).get(field) or "").strip()
+            or os.environ.get(env_name, "").strip())
+
+
 def notify_serverchan(cfg, title, body):
-    key = cfg["notify"]["serverchan"]["sendkey"]
+    key = _cred(cfg, "serverchan", "sendkey", "SERVERCHAN_KEY")
     r = requests.post(f"https://sctapi.ftqq.com/{key}.send", data={"title": title, "desp": body}, timeout=20)
     r.raise_for_status()
 
 
 def notify_pushplus(cfg, title, body):
-    token = cfg["notify"]["pushplus"]["token"]
+    token = _cred(cfg, "pushplus", "token", "PUSHPLUS_TOKEN")
     r = requests.post(
         "https://www.pushplus.plus/send",
         json={"token": token, "title": title, "content": body, "template": "txt"}, timeout=20,
@@ -1069,15 +1079,34 @@ def push_brief(cfg, events, meta, report_date, logger) -> int:
             REGION_LABEL.get(ev["region"], "其他"), 0
         ) + 1
     region_txt = "、".join(f"{k} {v}" for k, v in by_region.items()) or "无"
+
+    focus = []
+    for ev in events[:3]:
+        vlabel, _ = verification_level(ev)
+        focus.append(f"· {ev['title']}\n  {REGION_LABEL.get(ev['region'],'其他')} / "
+                     f"{TOPIC_LABEL.get(ev['topic'],'其他')} / 风险 {ev['risk']} / {vlabel}")
+    focus_txt = "\n".join(focus) if focus else "（今日无符合范围的事件）"
+
+    prev_txt = ""
+    prev = meta.get("prev") or {}
+    if prev.get("ok"):
+        d_ev = meta["events"] - prev["events"]
+        d_ar = meta["articles_in_scope"] - prev["articles"]
+        arrow = lambda v: "▲" if v > 0 else ("▼" if v < 0 else "－")
+        prev_txt = f"较昨日：事件 {arrow(d_ev)}{abs(d_ev)} · 报道 {arrow(d_ar)}{abs(d_ar)}\n"
+
     body = (
-        f"收录 {meta['articles_in_scope']} 条报道 / {meta['events']} 起事件 / "
-        f"{meta['high_risk']} 起高关注度\n"
-        f"最受关注：{top}\n"
-        f"地区分布：{region_txt}\n"
-        f"完整简报：{url}\n"
-        f"（指标为规则计算，细节请回原文核实）"
+        f"【今日概览】\n"
+        f"{meta['articles_in_scope']} 条报道 · {meta['events']} 起事件 · {meta['high_risk']} 起高关注度\n"
+        f"{prev_txt}"
+        f"\n【焦点事件】\n{focus_txt}\n"
+        f"\n【地区分布】\n{region_txt}\n"
+        f"\n完整简报（含逐条信源与原文链接）：\n{url}\n"
+        f"\n（风险分由公开报道的源数、伤亡规模、扩散度等规则计算，不代表事实认定；细节请回原文核实）"
     )
-    title = f"【世界脉搏】{report_date} 态势简报"
+    title = f"世界脉搏 {report_date}：{meta['events']} 起事件，{meta['high_risk']} 起高关注"
+
+    env_keys = {"pushplus": "PUSHPLUS_TOKEN", "serverchan": "SERVERCHAN_KEY"}
     sent = 0
     for name, fn in CHANNELS.items():
         conf = cfg["notify"].get(name) or {}
@@ -1085,6 +1114,10 @@ def push_brief(cfg, events, meta, report_date, logger) -> int:
             continue
         if name == "desktop" and os.name != "nt":
             continue  # 云端（Linux）没有桌面通知，跳过不报错
+        if name in env_keys and not str(conf.get("token") or conf.get("sendkey") or "").strip() \
+                and not os.environ.get(env_keys[name], "").strip():
+            logger.info(f"跳过推送：{name} 未配置凭证")
+            continue
         try:
             fn(cfg, title, body)
             sent += 1
