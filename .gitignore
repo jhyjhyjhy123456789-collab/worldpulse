@@ -1,0 +1,20 @@
+# 线上运行需要的（会被提交）
+# pulse.py / config.json / config.cloud.json / requirements.txt / site/ / data/monitor.db
+
+# 本机的工具链与临时产物，不要上传
+build/
+bin/
+dist/
+android/
+out/
+release.keystore
+*.zip
+*.apk
+
+# 日志与临时文件
+data/logs/
+data/_toast.ps1
+data/tunnel_url.txt
+
+__pycache__/
+*.pyc
