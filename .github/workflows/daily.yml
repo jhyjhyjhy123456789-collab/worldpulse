@@ -9,6 +9,8 @@ on:
     branches: [ main ]
     paths:
       - "pulse.py"
+      - "fund.py"
+      - "fund.json"
       - "config.cloud.json"
       - ".github/workflows/daily.yml"
 
@@ -41,7 +43,13 @@ jobs:
         run: python tools/set_public_url.py
 
       - name: 采集 + 生成报告
+        env:
+          PUSHPLUS_TOKEN: ${{ secrets.PUSHPLUS_TOKEN }}
+          SERVERCHAN_KEY: ${{ secrets.SERVERCHAN_KEY }}
         run: python pulse.py run --verbose
+
+      - name: 募捐页面监测（5 个指定项目）
+        run: python fund.py run
 
       - name: 提交报告与数据库（保留历史，趋势对比要用）
         run: |

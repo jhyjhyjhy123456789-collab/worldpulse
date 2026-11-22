@@ -1,0 +1,26 @@
+{
+  "runtime_label": "云端每日自动运行 · GitHub Actions",
+  "note": "监测公开募捐页面的项目进度与捐款明细；判定新捐款以捐款 ID 为准，首次运行只建立基线。",
+  "campaigns": [
+    {
+      "slug": "support-the-contemporary-uyghur-anthology",
+      "url": "https://www.gofundme.com/f/support-the-contemporary-uyghur-anthology"
+    },
+    {
+      "slug": "support-the-third-international-uyghur-forum-iuf-2026",
+      "url": "https://www.gofundme.com/f/support-the-third-international-uyghur-forum-iuf-2026"
+    },
+    {
+      "slug": "stand-with-uk-uyghur-community-this-ramadan",
+      "url": "https://www.gofundme.com/f/stand-with-uk-uyghur-community-this-ramadan"
+    },
+    {
+      "slug": "support-ana-care-for-uyghur-education-programs",
+      "url": "https://www.gofundme.com/f/support-ana-care-for-uyghur-education-programs"
+    },
+    {
+      "slug": "uic-wudu",
+      "url": "https://www.gofundme.com/f/uic-wudu"
+    }
+  ]
+}
