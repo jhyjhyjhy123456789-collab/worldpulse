@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0f1216">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>世界脉搏 · 2026-11-22</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icon.svg">
+<style>
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+:root{--bg:#0f1216;--panel:#171c23;--line:#262c36;--txt:#e8ecf2;--dim:#9aa4b2;
+--acc:#4da3ff;--hi:#ff5c5c;--mid:#ffa93c;--lo:#3ddc97;--chip:#1f2630}
+html,body{margin:0;padding:0;background:var(--bg);color:var(--txt);
+font-family:-apple-system,"PingFang SC","Microsoft YaHei UI","Microsoft YaHei",system-ui,sans-serif;
+font-size:15px;line-height:1.62;-webkit-font-smoothing:antialiased}
+.wrap{max-width:760px;margin:0 auto;padding:0 14px 56px}
+header{padding:26px 0 18px}
+.brand{display:flex;align-items:center;gap:9px;font-size:13px;color:var(--dim);letter-spacing:2px}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--acc);box-shadow:0 0 10px var(--acc)}
+h1{font-size:25px;margin:10px 0 4px;font-weight:650;letter-spacing:.5px}
+.date{color:var(--dim);font-size:13px}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin:16px 0 22px}
+.kpi{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:11px 10px}
+.kpi b{display:block;font-size:21px;font-weight:650;line-height:1.2}
+.kpi span{font-size:11px;color:var(--dim)}
+nav{position:sticky;top:0;z-index:9;background:rgba(15,18,22,.88);backdrop-filter:blur(10px);
+display:flex;gap:8px;overflow-x:auto;padding:9px 0;margin:0 -14px 18px;padding-left:14px;scrollbar-width:none}
+nav::-webkit-scrollbar{display:none}
+nav a{flex:0 0 auto;font-size:12.5px;color:var(--dim);text-decoration:none;border:1px solid var(--line);
+border-radius:20px;padding:5px 12px;background:var(--panel)}
+h2{font-size:15px;margin:30px 0 12px;font-weight:600;color:var(--txt);
+display:flex;align-items:center;gap:8px}
+h2::before{content:"";width:3px;height:14px;background:var(--acc);border-radius:2px}
+.lead{background:linear-gradient(165deg,#1b2635,#141a22);border:1px solid #2b3646;border-radius:14px;
+padding:14px 16px;margin-bottom:11px}
+.lead .t{font-size:15.5px;font-weight:600;margin-bottom:6px}
+.lead .s{font-size:12.5px;color:var(--dim)}
+.lead .q{font-size:13px;color:#c7d2e0;margin:8px 0 4px;padding-left:10px;border-left:2px solid #35506e}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.chip{font-size:11px;padding:2px 8px;border-radius:20px;background:var(--chip);color:#b9c4d2;border:1px solid var(--line)}
+.chip.hi{background:rgba(255,92,92,.13);color:#ff8a8a;border-color:rgba(255,92,92,.32)}
+.chip.mid{background:rgba(255,169,60,.13);color:#ffc070;border-color:rgba(255,169,60,.3)}
+.chip.lo{background:rgba(61,220,151,.12);color:#7ff0bd;border-color:rgba(61,220,151,.28)}
+.chip.acc{background:rgba(77,163,255,.13);color:#8cc4ff;border-color:rgba(77,163,255,.3)}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:14px 15px;margin-bottom:11px}
+.card h3{margin:0 0 6px;font-size:15px;font-weight:600;line-height:1.45}
+.meta{font-size:12px;color:var(--dim);margin-bottom:2px}
+.quote{font-size:13px;color:#cfd8e4;margin:9px 0 0;padding:9px 11px;background:#12171d;
+border-radius:9px;border-left:2px solid #2f4a68}
+.quote em{color:#7f8b9b;font-style:normal;font-size:11.5px}
+.src{margin:10px 0 0;padding:0;list-style:none}
+.src li{padding:7px 0;border-top:1px solid var(--line);font-size:12.5px}
+.src li:first-child{border-top:0}
+.src a{color:#9ecbff;text-decoration:none;word-break:break-all}
+.src .m{color:var(--dim);font-size:11.5px}
+details{margin-top:9px}
+summary{cursor:pointer;font-size:12px;color:var(--acc);list-style:none}
+summary::-webkit-details-marker{display:none}
+details ul{margin:8px 0 0;padding-left:16px;color:var(--dim);font-size:12px}
+.region{display:grid;grid-template-columns:repeat(2,1fr);gap:9px}
+.rc{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:12px}
+.rc .n{font-size:13px;font-weight:600;display:flex;justify-content:space-between;align-items:center}
+.rc .v{font-size:12px;color:var(--dim);margin-top:5px}
+.bar{height:4px;border-radius:3px;background:#232a34;margin-top:9px;overflow:hidden}
+.bar i{display:block;height:100%;border-radius:3px}
+table{width:100%;border-collapse:collapse;font-size:12px;background:var(--panel);
+border:1px solid var(--line);border-radius:12px;overflow:hidden}
+th,td{padding:8px 9px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:var(--dim);font-weight:500;background:#141920}
+.ok{color:var(--lo)}.bad{color:var(--hi)}
+.note{font-size:12px;color:var(--dim);background:#12171d;border:1px dashed #2c3540;
+border-radius:12px;padding:12px 14px;margin-top:10px}
+.foot{margin-top:34px;font-size:11.5px;color:#78828f;line-height:1.7;border-top:1px solid var(--line);padding-top:16px}
+a.plain{color:inherit;text-decoration:none}
+@media (max-width:420px){.kpis{grid-template-columns:repeat(2,1fr)}h1{font-size:23px}}
+</style>
+</head><body><div class="wrap">
+<header>
+  <div class="brand"><span class="dot"></span>WORLD PULSE · 每日态势简报</div>
+  <h1>2026-11-22 国际态势</h1>
+  <div class="date">生成于 2026-11-22 18:06 · 数据窗口过去 36 小时 · 全部内容可溯源</div>
+  <div class="date" style="color:#4da3ff">较昨日：无对比基线（首次运行或昨日未生成）</div>
+</header>
+
+<div class="kpis">
+  <div class="kpi"><b>37</b><span>收录报道</span></div>
+  <div class="kpi"><b>18</b><span>识别事件</span></div>
+  <div class="kpi"><b>2</b><span>高关注度</span></div>
+  <div class="kpi"><b>10/10</b><span>信源可用</span></div>
+</div>
+<nav>
+  <a href="#lead">今日要点</a><a href="#regions">地区态势</a>
+  <a href="#topics">话题热度</a>
+  <a href="#events">事件全景</a><a href="#compare">媒体对照</a>
+  <a href="#audit">数据审计</a><a href="#method">方法与免责</a>
+</nav>
+
+<h2 id="lead">今日要点</h2>
+<div class="lead">
+  <div class="t">南苏丹发生武装袭击事件，已致15名平民死亡</div>
+  <div class="s">非洲 · 武装冲突 ·
+    3 家媒体 · 4 条报道 · 风险指数 75</div>
+  <div class="chips">
+    <span class="chip hi">关注度 高</span>
+    <span class="chip">非洲</span>
+    <span class="chip">武装冲突</span>
+  </div><div class="q">“当地时间11月21日晚，南苏丹反对派武装在该国西北部瓦拉普州发动袭击。截至目前，袭击已造成至少15名平民死亡。（央视新闻）”<br><em>— 界面新闻 原文摘录</em></div>
+</div><div class="lead">
+  <div class="t">伊朗革命卫队称袭击美军在巴林两处基地防空雷达</div>
+  <div class="s">中东 · 武装冲突 ·
+    3 家媒体 · 4 条报道 · 风险指数 72</div>
+  <div class="chips">
+    <span class="chip hi">关注度 高</span>
+    <span class="chip">中东</span>
+    <span class="chip">武装冲突</span>
+  </div><div class="q">“新华社德黑兰11月21日电(记者刁慧琳 沙达提)据伊朗伊斯兰共和国通讯社21日报道，伊朗伊斯兰革命卫队当天发表声明称，革命卫队航空航天部队使用导弹和无人机袭击了美国在巴林里法和阿瓦利两处军事基地的防空雷达。”<br><em>— 中新网·国际 原文摘录</em></div>
+</div><div class="lead">
+  <div class="t">Nations at UN talks on AI killer robots agree to more talks but no firm commitment to rein them in</div>
+  <div class="s">全球 · 外交关系 ·
+    3 家媒体 · 5 条报道 · 风险指数 55</div>
+  <div class="chips">
+    <span class="chip mid">关注度 中</span>
+    <span class="chip">全球</span>
+    <span class="chip">外交关系</span>
+  </div><div class="q">“Efforts to establish rules for AI-powered killer robots and drones have run aground. U.N.-backed talks in Geneva ended Saturday with an agreement to extend discussions for two more years.”<br><em>— NPR World 原文摘录</em></div>
+</div>
+
+<h2 id="regions">地区态势</h2>
+<div class="region"><div class="rc">
+  <div class="n"><span>亚太</span><span style="color:var(--lo);font-size:12px">3 起</span></div>
+  <div class="v">印尼一糖果厂发生火灾致3人死亡 数十人失联</div>
+  <div class="bar"><i style="width:37%;background:var(--lo)"></i></div>
+  <div class="v">平均风险 37 · 最高 55</div>
+</div><div class="rc">
+  <div class="n"><span>南亚</span><span style="color:var(--lo);font-size:12px">1 起</span></div>
+  <div class="v">Indian opposition party’s youth wing warns of more Meta protests after police clashes</div>
+  <div class="bar"><i style="width:38%;background:var(--lo)"></i></div>
+  <div class="v">平均风险 38 · 最高 38</div>
+</div><div class="rc">
+  <div class="n"><span>中东</span><span style="color:var(--mid);font-size:12px">2 起</span></div>
+  <div class="v">伊朗革命卫队称袭击美军在巴林两处基地防空雷达</div>
+  <div class="bar"><i style="width:47%;background:var(--mid)"></i></div>
+  <div class="v">平均风险 47 · 最高 72</div>
+</div><div class="rc">
+  <div class="n"><span>欧洲</span><span style="color:var(--mid);font-size:12px">2 起</span></div>
+  <div class="v">一艘俄罗斯船只在利比亚一海军基地遭无人机袭击</div>
+  <div class="bar"><i style="width:46%;background:var(--mid)"></i></div>
+  <div class="v">平均风险 46 · 最高 51</div>
+</div><div class="rc">
+  <div class="n"><span>非洲</span><span style="color:var(--hi);font-size:12px">1 起</span></div>
+  <div class="v">南苏丹发生武装袭击事件，已致15名平民死亡</div>
+  <div class="bar"><i style="width:75%;background:var(--hi)"></i></div>
+  <div class="v">平均风险 75 · 最高 75</div>
+</div><div class="rc">
+  <div class="n"><span>北美</span><span style="color:var(--lo);font-size:12px">3 起</span></div>
+  <div class="v">特朗普点赞中俄美元首会晤气氛“热烈”，是“多年来最具重大意义”的国际会晤之一</div>
+  <div class="bar"><i style="width:35%;background:var(--lo)"></i></div>
+  <div class="v">平均风险 35 · 最高 41</div>
+</div><div class="rc">
+  <div class="n"><span>全球</span><span style="color:var(--lo);font-size:12px">6 起</span></div>
+  <div class="v">Nations at UN talks on AI killer robots agree to more talks but no firm commitment to rein them in</div>
+  <div class="bar"><i style="width:42%;background:var(--lo)"></i></div>
+  <div class="v">平均风险 42 · 最高 55</div>
+</div></div>
+
+<h2 id="topics">话题热度</h2>
+<div class="note" style="margin-bottom:10px">按事件数与平均风险排序，反映当天国际报道的注意力分布，不代表事件重要性排序。</div>
+<table><thead><tr><th>话题</th><th>事件</th><th>报道</th><th>平均风险</th></tr></thead><tbody><tr><td>武装冲突</td><td>6</td><td>14</td><td class='ok'>54</td></tr><tr><td>外交关系</td><td>4</td><td>10</td><td class='ok'>40</td></tr><tr><td>事故灾难</td><td>3</td><td>6</td><td class='ok'>39</td></tr><tr><td>公共卫生</td><td>2</td><td>2</td><td class='ok'>25</td></tr><tr><td>气候能源</td><td>1</td><td>3</td><td class='ok'>54</td></tr><tr><td>自然灾害</td><td>1</td><td>1</td><td class='ok'>38</td></tr><tr><td>人道状况</td><td>1</td><td>1</td><td class='ok'>28</td></tr></tbody></table>
+
+<h2 id="events">事件全景（18）</h2>
+<article class="card">
+  <div class="chips" style="margin:0 0 8px">
+    <span class="chip hi">高 · 75</span>
+    <span class="chip">非洲</span>
+    <span class="chip">武装冲突</span>
+    <span class="chip acc">3 源 / 4 条</span>
+    <span class="chip lo">三源以上印证</span>
+  </div>
+  <h3>南苏丹发生武装袭击事件，已致15名平民死亡</h3>
+  <div class="quote">“当地时间11月21日晚，南苏丹反对派武装在该国西北部瓦拉普州发动袭击。截至目前，袭击已造成至少15名平民死亡。（央视新闻）”<br><em>— 界面新闻 原文摘录（点击下方链接看全文）</em></div>
+  <details><summary>指标构成（规则计算，非结论）</summary><ul><li>独立媒体 3 家（覆盖度 30）</li><li>话题类型「武装冲突」（权重 25）</li><li>标题含伤亡/规模类表述（3）</li><li>报道量 4 条（12）</li><li>权威源（Tier-1）1 家（+5）</li></ul></details>
+  <details><summary>全部报道（4 条，点开直达原文）</summary>
+    <ul class="src"><li><a href="https://www.jiemian.com/article/15359344.html" target="_blank" rel="noreferrer">南苏丹发生武装袭击事件，已致15名平民死亡</a><div class="m">界面新闻 · Tier-2 · 2026-11-22 13:00</div></li><li><a href="https://www.bbc.co.uk/news/articles/cr894gjz0j0yo?at_medium=RSS&amp;at_campaign=rss" target="_blank" rel="noreferrer">Explosion on Russian ship at Libya port caused by suspected drone attack, officials say</a><div class="m">BBC World · Tier-1 · 2026-11-22 17:16</div></li><li><a href="https://www.aljazeera.com/news/2026/11/22/suspected-drone-strike-hits-russian-vessel-in-libya?traffic_source=rss" target="_blank" rel="noreferrer">Russian vessel hit by suspected sea drone at Libya’s Benghazi naval base</a><div class="m">Al Jazeera · Tier-2 · 2026-11-22 17:12</div></li><li><a href="https://www.aljazeera.com/news/2026/11/22/rsf-drones-kill-four-in-khartoum?traffic_source=rss" target="_blank" rel="noreferrer">Drone attacks kill four near Sudan’s capital, damage UN building</a><div class="m">Al Jazeera · Tier-2 · 2026-11-22 15:03</div></li></ul>
+  </details>
+</article><article class="card">
+  <div class="chips" style="margin:0 0 8px">
+    <span class="chip hi">高 · 72</span>
+    <span class="chip">中东</span>
+    <span class="chip">武装冲突</span>
+    <span class="chip acc">3 源 / 4 条</span>
+    <span class="chip lo">三源以上印证</span>
+  </div>
+  <h3>伊朗革命卫队称袭击美军在巴林两处基地防空雷达</h3>
+  <div class="quote">“新华社德黑兰11月21日电(记者刁慧琳 沙达提)据伊朗伊斯兰共和国通讯社21日报道，伊朗伊斯兰革命卫队当天发表声明称，革命卫队航空航天部队使用导弹和无人机袭击了美国在巴林里法和阿瓦利两处军事基地的防空雷达。”<br><em>— 中新网·国际 原文摘录（点击下方链接看全文）</em></div>
+  <details><summary>指标构成（规则计算，非结论）</summary><ul><li>独立媒体 3 家（覆盖度 30）</li><li>话题类型「武装冲突」（权重 25）</li><li>报道量 4 条（12）</li><li>权威源（Tier-1）1 家（+5）</li></ul></details>
+  <details><summary>全部报道（4 条，点开直达原文）</summary>
+    <ul class="src"><li><a href="https://www.chinanews.com.cn/gj/2026/11-22/10735934.shtml" target="_blank" rel="noreferrer">伊朗革命卫队称袭击美军在巴林两处基地防空雷达</a><div class="m">中新网·国际 · Tier-1 · 2026-11-21 22:10</div></li><li><a href="https://www.theguardian.com/world/2026/nov/22/briton-lewis-pugh-swims-strait-of-hormuz-environment-war" target="_blank" rel="noreferrer">Briton swims length of strait of Hormuz to highlight environmental cost of war</a><div class="m">The Guardian · World · Tier-2 · 2026-11-22 13:36</div></li><li><a href="https://www.aljazeera.com/news/2026/11/22/houthis-report-attack-on-sanaa-as-saudi-arabia-intercepts-drone?traffic_source=rss" target="_blank" rel="noreferrer">Saudi Arabia intercepts drone, missile as Houthis report attack on Sanaa</a><div class="m">Al Jazeera · Tier-2 · 2026-11-22 13:16</div></li><li><a href="https://www.aljazeera.com/news/2026/11/22/iran-unveils-dual-missile-launcher-new-missile-city-what-to-know?traffic_source=rss" target="_blank" rel="noreferrer">Iran unveils dual-missile launcher, new ‘missile city’: What to know</a><div class="m">Al Jazeera · Tier-2 · 2026-11-22 14:20</div></li></ul>
+  </details>
+</article><article class="card">
+  <div class="chips" style="margin:0 0 8px">
+    <span class="chip mid">中 · 55</span>
+    <span class="chip">全球</span>
+    <span class="chip">外交关系</span>
+    <span class="chip acc">3 源 / 5 条</span>
+    <span class="chip lo">三源以上印证</span>
+  </div>
+  <h3>Nations at UN talks on AI killer robots agree to more talks but no firm commitment to rein them in</h3>
+  <div class="quote">“Efforts to establish rules for AI-powered killer robots and drones have run aground. U.N.-backed talks in Geneva ended Saturday with an agreement to extend discussions for two more years.”<br><em>— NPR World 原文摘录（点击下方链接看全文）</em></div>
+  <details><summary>指标构成（规则计算，非结论）</summary><ul><li>独立媒体 3 家（覆盖度 30）</li><li>话题类型「外交关系」（权重 10）</li><li>报道量 5 条（15）</li></ul></details>
+  <details><summary>全部报道（5 条，点开直达原文）</summary>
+    <ul class="src"><li><a href="https://www.npr.org/2026/11/21/g-s1-154914/nations-at-un-talks-on-ai-killer-robots-agree-to-more-talks-but-no-firm-commitment-to-rein-them-in" target="_blank" rel="noreferrer">Nations at UN talks on AI killer robots agree to more talks but no firm commitment to rein them in</a><div class="m">NPR World · Tier-2 · 2026-11-21 08:08</div></li><li><a href="https://www.aljazeera.com/news/2026/11/22/countries-react-after-cop31-climate-talks-end-in-collapse?traffic_source=rss" target="_blank" rel="noreferrer">‘Disappointing’: Delegates react after COP31 climate talks end without deal</a><div class="m">Al Jazeera · Tier-2 · 2026-11-22 16:33</div></li><li><a href="https://www.aljazeera.com/sports/2026/11/22/bruno-fernandes-manchester-united-contract-talks-premier-league-football?traffic_source=rss" target="_blank" rel="noreferrer">Bruno Fernandes says contract talks on hold as Man United battle poor start</a><div class="m">Al Jazeera · Tier-2 · 2026-11-22 12:22</div></li><li><a href="https://www.npr.org/2026/11/21/nx-s1-6047916/killer-robots-un-drones" target="_blank" rel="noreferrer">Killer robots: U.N. talks fall short of hopes for legally binding rules</a><div class="m">NPR World · Tier-2 · 2026-11-21 14:18</div></li><li><a href="https://www.theguardian.com/environment/2026/nov/22/cop31-climate-talks-set-to-end-in-deep-division-as-key-deal-rejected" target="_blank" rel="noreferrer">Cop31 climate talks break down as key deal rejected</a><div class="m">The Guardian · World · Tier-2 · 2026-11-22 16:14</div></li></ul>
+  </details>
+</article><article class="card">
+  <div class="chips" style="margin:0 0 8px">
+    <span class="chip mid">中 · 55</span>
+    <span class="chip">亚太</span>
+    <span class="chip">事故灾难</span>
+    <span class="chip acc">2 源 / 3 条</span>
+    <span class="chip lo">三源以上印证</span>
+  </div>
+  <h3>印尼一糖果厂发生火灾致3人死亡 数十人失联</h3>
+  <div class="quote">“中新社雅加达11月22日电 (记者 李志全)印度尼西亚万丹省西冷县一家糖果厂21日晚发生火灾。搜救部门22日最新消息称，事故已造成3人死亡、4人受伤，另有数十人失联。”<br><em>— 中新网·国际 原文摘录（点击下方链接看全文）</em></div>
+  <details><summary>指标构成（规则计算，非结论）</summary><ul><li>独立媒体 2 家（覆盖度 20）</li><li>话题类型「事故灾难」（权重 15）</li><li>标题含伤亡/规模类表述（6）</li><li>报道量 3 条（9）</li><li>权威源（Tier-1）1 家（+5）</li></ul></details>
+  <details><summary>全部报道（3 条，点开直达原文）</summary>
+    <ul class="src"><li><a href="https://www.chinanews.com.cn/gj/2026/11-22/10736019.shtml" target="_blank" rel="noreferrer">印尼一糖果厂发生火灾致3人死亡 数十人失联</a><div class="m">中新网·国际 · Tier-1 · 2026-11-22 06:34</div></li><li><a href="https://www.chinanews.com.cn/gj/2026/11-22/10736000.shtml" target="_blank" rel="noreferrer">印尼糖果厂火灾已致3人死亡</a><div class="m">中新网·国际 · Tier-1 · 2026-11-22 03:26</div></li><li><a href="https://www.jiemian.com/article/15359413.html" target="_blank" rel="noreferrer">印尼糖果厂火灾现场整理出24个尸袋</a><div class="m">界面新闻 · Tier-2 · 2026-11-22 14:38</div></li></ul>
+  </details>
+</article><article class="card">
+  <div class="chips" style="margin:0 0 8px">
+    <span class="chip mid">中 · 54</span>
+    <span class="chip">全球</span>
+    <span class="chip">气候能源</span>
+    <span class="chip acc">3 源 / 3 条</span>
+    <span class="chip lo">三源以上印证</span>
+  </div>
+  <h3>联合国气候变化安塔利亚大会闭幕</h3>
+  <div class="quote">“当地时间22日，《联合国气候变化框架公约》第三十一次缔约方大会(COP31)闭幕，未就政治决定达成一致。”<br><em>— 中新网·国际 原文摘录（点击下方链接看全文）</em></div>
+  <details><summary>指标构成（规则计算，非结论）</summary><ul><li>独立媒体 3 家（覆盖度 30）</li><li>话题类型「气候能源」（权重 10）</li><li>报道量 3 条（9）</li><li>权威源（Tier-1）1 家（+5）</li></ul></details>
+  <details><summary>全部报道（3 条，点开直达原文）</summary>
+    <ul class="src"><li><a href="https://www.chinanews.com.cn/gj/2026/11-22/10736214.shtml" target="_blank" rel="noreferrer">联合国气候变化安塔利亚大会闭幕</a><div class="m">中新网·国际 · Tier-1 · 2026-11-22 14:55</div></li><li><a href="https://www.jiemian.com/article/15359444.html" target="_blank" rel="noreferrer">联合国气候变化安塔利亚大会闭幕</a><div class="m">界面新闻 · Tier-2 · 2026-11-22 14:55</div></li><li><a href="https://www.theguardian.com/environment/2026/nov/21/china-commits-low-carbon-electrification-help-others-improve" target="_blank" rel="noreferrer">China commits to low-carbon electrification and help for others to improve</a><div class="m">The Guardian · World · Tier-2 · 2026-11-21 09:47</div></li></ul>
+  </details>
+</article><article class="card">
+  <div class="chips" style="margin:0 0 8px">
+    <span class="chip mid">中 · 51</span>
+    <span class="chip">欧洲</span>
+    <span class="chip">武装冲突</span>
+    <span class="chip acc">2 源 / 2 条</span>
+    <span class="chip mid">双源报道</span>
+  </div>
+  <h3>一艘俄罗斯船只在利比亚一海军基地遭无人机袭击</h3>
+  <div class="quote">“据利比亚媒体11月22日报道，一艘停泊在利比亚班加西海军基地的俄罗斯船只当天凌晨遭无人机袭击。（新华社）”<br><em>— 界面新闻 原文摘录（点击下方链接看全文）</em></div>
+  <details><summary>指标构成（规则计算，非结论）</summary><ul><li>独立媒体 2 家（覆盖度 20）</li><li>话题类型「武装冲突」（权重 25）</li><li>报道量 2 条（6）</li></ul></details>
+  <details><summary>全部报道（2 条，点开直达原文）</summary>
+    <ul class="src"><li><a href="https://www.jiemian.com/article/15359408.html" target="_blank" rel="noreferrer">一艘俄罗斯船只在利比亚一海军基地遭无人机袭击</a><div class="m">界面新闻 · Tier-2 · 2026-11-22 14:38</div></li><li><a href="https://www.theguardian.com/world/2026/nov/22/blast-russian-ship-suspected-drone-attack-benghazi-libya" target="_blank" rel="noreferrer">Blast on Russian ship in Benghazi a suspected drone attack, say Libyan authorities</a><div class="m">The Guardian · World · Tier-2 · 2026-11-22 16:55</div></li></ul>
+  </details>
+</article><article class="card">
+  <div class="chips" style="margin:0 0 8px">
+    <span class="chip mid">中 · 51</span>
+    <span class="chip">全球</span>
+    <span class="chip">武装冲突</span>
+    <span class="chip acc">2 源 / 2 条</span>
+    <span class="chip mid">双源报道</span>
+  </div>
+  <h3>Israeli settlers attack multiple Palestinian villages as pogroms surge</h3>
+  <div class="quote">“Israeli settlers attacked several Palestinian towns and villages in the occupied West Bank on Sunday.”<br><em>— Al Jazeera 原文摘录（点击下方链接看全文）</em></div>
+  <details><summary>指标构成（规则计算，非结论）</summary><ul><li>独立媒体 2 家（覆盖度 20）</li><li>话题类型「武装冲突」（权重 25）</li><li>报道量 2 条（6）</li></ul></details>
+  <details><summary>全部报道（2 条，点开直达原文）</summary>
+    <ul class="src"><li><a href="https://www.aljazeera.com/video/newsfeed/2026/11/22/israeli-settlers-attack-multiple-palestinian-villages-as-pogroms-surge?traffic_source=rss" target="_blank" rel="noreferrer">Israeli settlers attack multiple Palestinian villages as pogroms surge</a><div class="m">Al Jazeera · Tier-2 · 2026-11-22 16:50</div></li><li><a href="https://www.theguardian.com/world/2026/nov/21/excitement-unease-haiti-el-salvador-troops-gangs-war-bukele" target="_blank" rel="noreferrer">Haitians excited but uneasy as El Salvador troops fight gangs</a><div class="m">The Guardian · World · Tier-2 · 2026-11-21 11:00</div></li></ul>
+  </details>
+</article><article class="card">
+  <div class="chips" style="margin:0 0 8px">
+    <span class="chip lo">低 · 41</span>
+    <span class="chip">北美</span>
+    <span class="chip">外交关系</span>
+    <span class="chip acc">2 源 / 2 条</span>
+    <span class="chip lo">三源以上印证</span>
+  </div>
+  <h3>特朗普点赞中俄美元首会晤气氛“热烈”，是“多年来最具重大意义”的国际会晤之一</h3>
+  <div class="quote">“中新网11月22日电 综合外媒报道，当地时间20日，美国总统特朗普在白宫举行的新闻发布会上表示，日前在中国深圳举行的亚太经合组织领导人非正式会议是一场非常成功的经济会议，美国、中国和俄罗斯三国领导人还举行了首次三方会晤，这是“多年来最具重大意义”的国际会晤之一。”<br><em>— 中新网·国际 原文摘录（点击下方链接看全文）</em></div>
+  <details><summary>指标构成（规则计算，非结论）</summary><ul><li>独立媒体 2 家（覆盖度 20）</li><li>话题类型「外交关系」（权重 10）</li><li>报道量 2 条（6）</li><li>权威源（Tier-1）1 家（+5）</li></ul></details>
+  <details><summary>全部报道（2 条，点开直达原文）</summary>
+    <ul class="src"><li><a href="https://www.chinanews.com.cn/gj/2026/11-22/10736151.shtml" target="_blank" rel="noreferrer">特朗普点赞中俄美元首会晤气氛“热烈”，是“多年来最具重大意义”的国际会晤之一</a><div class="m">中新网·国际 · Tier-1 · 2026-11-22 11:12</div></li><li><a href="https://www.npr.org/2026/11/21/nx-s1-6048741/what-did-xi-jinping-get-from-the-bear-hug-with-trump-at-the-shenzhen-summit" target="_blank" rel="noreferrer">What did Xi Jinping get from the bear hug with Trump at the Shenzhen summit?</a><div class="m">NPR World · Tier-2 · 2026-11-21 22:01</div></li></ul>
+  </details>
+</article><article class="card">
+  <div class="chips" style="margin:0 0 8px">
+    <span class="chip lo">低 · 41</span>
+    <span class="chip">欧洲</span>
+    <span class="chip">外交关系</span>
+    <span class="chip acc">2 源 / 2 条</span>
+    <span class="chip lo">三源以上印证</span>
+  </div>
+  <h3>Deal with EU not dependent on tuition fees agreement, Miliband says</h3>
+  <div class="quote">“Brussels sources had previously suggested the bloc might not apply the wider deal until fees were lowered for EU students in Britain.”<br><em>— BBC World 原文摘录（点击下方链接看全文）</em></div>
+  <details><summary>指标构成（规则计算，非结论）</summary><ul><li>独立媒体 2 家（覆盖度 20）</li><li>话题类型「外交关系」（权重 10）</li><li>报道量 2 条（6）</li><li>权威源（Tier-1）1 家（+5）</li></ul></details>
+  <details><summary>全部报道（2 条，点开直达原文）</summary>
+    <ul class="src"><li><a href="https://www.bbc.co.uk/news/articles/cm9w9p4geke8o?at_medium=RSS&amp;at_campaign=rss" target="_blank" rel="noreferrer">Deal with EU not dependent on tuition fees agreement, Miliband says</a><div class="m">BBC World · Tier-1 · 2026-11-21 09:40</div></li><li><a href="https://www.npr.org/2026/11/21/nx-s1-6047379/military-analyst-phillips-obrien-on-ukraine-and-europe-being-left-out-of-trumps-talks" target="_blank" rel="noreferrer">Military analyst Phillips O&#x27;Brien on Ukraine and Europe being left out of Trump&#x27;s talks</a><div class="m">NPR World · Tier-2 · 2026-11-21 12:40</div></li></ul>
+  </details>
+</article><article class="card">
+  <div class="chips" style="margin:0 0 8px">
+    <span class="chip lo">低 · 38</span>
+    <span class="chip">全球</span>
+    <span class="chip">自然灾害</span>
+    <span class="chip acc">1 源 / 1 条</span>
+    <span class="chip hi">单源待核实</span>
+  </div>
+  <h3>新疆阿克苏地区拜城县发生3.7级地震，震源深度14千米</h3>
+  <div class="quote">“中国地震台网正式测定：11月22日21时43分在新疆阿克苏地区拜城县（北纬41.94度，东经82.46度）发生3.7级地震，震源深度14千米。”<br><em>— 界面新闻 原文摘录（点击下方链接看全文）</em></div><div class="meta" style="color:#ffa93c;margin-top:8px">⚠ 仅单一信源，未获多源印证，请点原文核实</div>
+  <details><summary>指标构成（规则计算，非结论）</summary><ul><li>独立媒体 1 家（覆盖度 10）</li><li>话题类型「自然灾害」（权重 25）</li><li>报道量 1 条（3）</li></ul></details>
+  <details><summary>全部报道（1 条，点开直达原文）</summary>
+    <ul class="src"><li><a href="https://www.jiemian.com/article/15359371.html" target="_blank" rel="noreferrer">新疆阿克苏地区拜城县发生3.7级地震，震源深度14千米</a><div class="m">界面新闻 · Tier-2 · 2026-11-22 13:50</div></li></ul>
+  </details>
+</article><article class="card">
+  <div class="chips" style="margin:0 0 8px">
+    <span class="chip lo">低 · 38</span>
+    <span class="chip">北美</span>
+    <span class="chip">武装冲突</span>
+    <span class="chip acc">1 源 / 1 条</span>
+    <span class="chip hi">单源待核实</span>
+  </div>
+  <h3>US Congress helped end the Vietnam War. Can it stop the Iran war?</h3>
+  <div class="quote">“Congress forbade funding for the Vietnam War, contributing to the fall of the South Vietnamese government in Saigon.”<br><em>— Al Jazeera 原文摘录（点击下方链接看全文）</em></div><div class="meta" style="color:#ffa93c;margin-top:8px">⚠ 仅单一信源，未获多源印证，请点原文核实</div>
+  <details><summary>指标构成（规则计算，非结论）</summary><ul><li>独立媒体 1 家（覆盖度 10）</li><li>话题类型「武装冲突」（权重 25）</li><li>报道量 1 条（3）</li></ul></details>
+  <details><summary>全部报道（1 条，点开直达原文）</summary>
+    <ul class="src"><li><a href="https://www.aljazeera.com/news/2026/11/22/us-congress-helped-end-the-vietnam-war-can-it-stop-the-iran?traffic_source=rss" target="_blank" rel="noreferrer">US Congress helped end the Vietnam War. Can it stop the Iran war?</a><div class="m">Al Jazeera · Tier-2 · 2026-11-22 12:31</div></li></ul>
+  </details>
+</article><article class="card">
+  <div class="chips" style="margin:0 0 8px">
+    <span class="chip lo">低 · 38</span>
+    <span class="chip">南亚</span>
+    <span class="chip">武装冲突</span>
+    <span class="chip acc">1 源 / 1 条</span>
+    <span class="chip hi">单源待核实</span>
+  </div>
+  <h3>Indian opposition party’s youth wing warns of more Meta protests after police clashes</h3>
+  <div class="quote">“Members of Congress party clashed with police outside tech company’s offices on Friday The youth wing of India’s main opposition Congress party warned of more protests against Meta’s removal of some of its members’ ⁠accounts, ⁠a day after clashing with ​police outside the tech firm’s locals offices. In Hyderabad on Friday, protesters ‌carrying placards and chanted slogans as they stormed into ‌the”<br><em>— The Guardian · World 原文摘录（点击下方链接看全文）</em></div><div class="meta" style="color:#ffa93c;margin-top:8px">⚠ 仅单一信源，未获多源印证，请点原文核实</div>
+  <details><summary>指标构成（规则计算，非结论）</summary><ul><li>独立媒体 1 家（覆盖度 10）</li><li>话题类型「武装冲突」（权重 25）</li><li>报道量 1 条（3）</li></ul></details>
+  <details><summary>全部报道（1 条，点开直达原文）</summary>
+    <ul class="src"><li><a href="https://www.theguardian.com/world/2026/nov/22/india-congress-meta-protests-police-hyderabad" target="_blank" rel="noreferrer">Indian opposition party’s youth wing warns of more Meta protests after police clashes</a><div class="m">The Guardian · World · Tier-2 · 2026-11-22 09:14</div></li></ul>
+  </details>
+</article><article class="card">
+  <div class="chips" style="margin:0 0 8px">
+    <span class="chip lo">低 · 34</span>
+    <span class="chip">全球</span>
+    <span class="chip">事故灾难</span>
+    <span class="chip acc">1 源 / 2 条</span>
+    <span class="chip hi">单源待核实</span>
+  </div>
+  <h3>NFL’s Jaylen Harrell reportedly assaulted driver before crash that left player seriously injured</h3>
+  <div class="quote">“Incident occurred in Tampa on Friday morning Crash leaves linebacker with serious injuries Tampa police are investigating whether Tennessee Titans linebacker Jaylen Harrell assaulted a rideshare driver before a crash that left the NFL player in hospital. The Tampa ⁠Police Department, in ⁠a preliminary report, said Harrell was in the back seat of the car around 8.45am on Friday in the backseat when”<br><em>— The Guardian · World 原文摘录（点击下方链接看全文）</em></div><div class="meta" style="color:#ffa93c;margin-top:8px">⚠ 仅单一信源，未获多源印证，请点原文核实</div>
+  <details><summary>指标构成（规则计算，非结论）</summary><ul><li>独立媒体 1 家（覆盖度 10）</li><li>话题类型「事故灾难」（权重 15）</li><li>标题含伤亡/规模类表述（3）</li><li>报道量 2 条（6）</li></ul></details>
+  <details><summary>全部报道（2 条，点开直达原文）</summary>
+    <ul class="src"><li><a href="https://www.theguardian.com/sport/2026/nov/22/titans-jaylen-harrell-reportedly-assaulted-driver-before-crash-that-left-player-seriously-injured" target="_blank" rel="noreferrer">NFL’s Jaylen Harrell reportedly assaulted driver before crash that left player seriously injured</a><div class="m">The Guardian · World · Tier-2 · 2026-11-22 13:25</div></li><li><a href="https://www.theguardian.com/technology/2026/nov/21/international-talks-control-ai-autonomous-weapons-collapse" target="_blank" rel="noreferrer">International UN talks on controlling use of autonomous weapons collapse</a><div class="m">The Guardian · World · Tier-2 · 2026-11-21 16:36</div></li></ul>
+  </details>
+</article><article class="card">
+  <div class="chips" style="margin:0 0 8px">
+    <span class="chip lo">低 · 28</span>
+    <span class="chip">北美</span>
+    <span class="chip">事故灾难</span>
+    <span class="chip acc">1 源 / 1 条</span>
+    <span class="chip hi">单源待核实</span>
+  </div>
+  <h3>NFL’s Jaylen Harrell hospitalised and investigated for assault in car crash</h3>
+  <div class="quote">“Police in US investigating whether Tennessee Titans defensive end assaulted rideshare driver before collision.”<br><em>— Al Jazeera 原文摘录（点击下方链接看全文）</em></div><div class="meta" style="color:#ffa93c;margin-top:8px">⚠ 仅单一信源，未获多源印证，请点原文核实</div>
+  <details><summary>指标构成（规则计算，非结论）</summary><ul><li>独立媒体 1 家（覆盖度 10）</li><li>话题类型「事故灾难」（权重 15）</li><li>报道量 1 条（3）</li></ul></details>
+  <details><summary>全部报道（1 条，点开直达原文）</summary>
+    <ul class="src"><li><a href="https://www.aljazeera.com/sports/2026/11/22/jaylen-harrell-car-accident-nfl-tennessee-titans-american-football?traffic_source=rss" target="_blank" rel="noreferrer">NFL’s Jaylen Harrell hospitalised and investigated for assault in car crash</a><div class="m">Al Jazeera · Tier-2 · 2026-11-22 13:46</div></li></ul>
+  </details>
+</article><article class="card">
+  <div class="chips" style="margin:0 0 8px">
+    <span class="chip lo">低 · 28</span>
+    <span class="chip">亚太</span>
+    <span class="chip">公共卫生</span>
+    <span class="chip acc">1 源 / 1 条</span>
+    <span class="chip hi">单源待核实</span>
+  </div>
+  <h3>菲律宾霍乱病例两周增加69% 卫生部吁保障饮水和食品安全</h3>
+  <div class="quote">“中新网马尼拉11月21日电 菲律宾卫生部20日发布报告称，菲律宾霍乱病例近期有所上升，10月11日至24日较此前两周增加69%。该部门正密切监测厄尔尼诺现象可能带来的饮水安全风险，呼吁公众注意饮用水和食品安全。”<br><em>— 中新网·国际 原文摘录（点击下方链接看全文）</em></div><div class="meta" style="color:#ffa93c;margin-top:8px">⚠ 仅单一信源，未获多源印证，请点原文核实</div>
+  <details><summary>指标构成（规则计算，非结论）</summary><ul><li>独立媒体 1 家（覆盖度 10）</li><li>话题类型「公共卫生」（权重 10）</li><li>报道量 1 条（3）</li><li>权威源（Tier-1）1 家（+5）</li></ul></details>
+  <details><summary>全部报道（1 条，点开直达原文）</summary>
+    <ul class="src"><li><a href="https://www.chinanews.com.cn/gj/2026/11-21/10735864.shtml" target="_blank" rel="noreferrer">菲律宾霍乱病例两周增加69% 卫生部吁保障饮水和食品安全</a><div class="m">中新网·国际 · Tier-1 · 2026-11-21 12:27</div></li></ul>
+  </details>
+</article><article class="card">
+  <div class="chips" style="margin:0 0 8px">
+    <span class="chip lo">低 · 28</span>
+    <span class="chip">亚太</span>
+    <span class="chip">人道状况</span>
+    <span class="chip acc">1 源 / 1 条</span>
+    <span class="chip hi">单源待核实</span>
+  </div>
+  <h3>菲律宾达沃机场发生客机紧急迫降 146人安全撤离</h3>
+  <div class="quote">“中新网马尼拉11月21日电 一架从中国香港飞往巴布亚新几内亚的客机21日凌晨因右侧发动机出现火警警报，在菲律宾南部达沃国际机场紧急迫降。机上146名乘客及机组人员全部安全撤离，无人员受伤。初步检查发现，飞机右侧起落架4个机轮受损。”<br><em>— 中新网·国际 原文摘录（点击下方链接看全文）</em></div><div class="meta" style="color:#ffa93c;margin-top:8px">⚠ 仅单一信源，未获多源印证，请点原文核实</div>
+  <details><summary>指标构成（规则计算，非结论）</summary><ul><li>独立媒体 1 家（覆盖度 10）</li><li>话题类型「人道状况」（权重 10）</li><li>报道量 1 条（3）</li><li>权威源（Tier-1）1 家（+5）</li></ul></details>
+  <details><summary>全部报道（1 条，点开直达原文）</summary>
+    <ul class="src"><li><a href="https://www.chinanews.com.cn/gj/2026/11-21/10735857.shtml" target="_blank" rel="noreferrer">菲律宾达沃机场发生客机紧急迫降 146人安全撤离</a><div class="m">中新网·国际 · Tier-1 · 2026-11-21 12:26</div></li></ul>
+  </details>
+</article><article class="card">
+  <div class="chips" style="margin:0 0 8px">
+    <span class="chip lo">低 · 23</span>
+    <span class="chip">中东</span>
+    <span class="chip">外交关系</span>
+    <span class="chip acc">1 源 / 1 条</span>
+    <span class="chip hi">单源待核实</span>
+  </div>
+  <h3>Climate change talks fall apart in final hours over fossil fuels</h3>
+  <div class="quote">“Some 200 countries gathered in Antalya, Turkey, for COP31, the annual climate negotiations. Countries failed to reach an agreement over fossil fuels - the primary driver of global warming.”<br><em>— NPR World 原文摘录（点击下方链接看全文）</em></div><div class="meta" style="color:#ffa93c;margin-top:8px">⚠ 仅单一信源，未获多源印证，请点原文核实</div>
+  <details><summary>指标构成（规则计算，非结论）</summary><ul><li>独立媒体 1 家（覆盖度 10）</li><li>话题类型「外交关系」（权重 10）</li><li>报道量 1 条（3）</li></ul></details>
+  <details><summary>全部报道（1 条，点开直达原文）</summary>
+    <ul class="src"><li><a href="https://www.npr.org/2026/11/22/nx-s1-6046195/cop31-climate-talks-close-disappointment" target="_blank" rel="noreferrer">Climate change talks fall apart in final hours over fossil fuels</a><div class="m">NPR World · Tier-2 · 2026-11-22 16:33</div></li></ul>
+  </details>
+</article><article class="card">
+  <div class="chips" style="margin:0 0 8px">
+    <span class="chip lo">低 · 23</span>
+    <span class="chip">全球</span>
+    <span class="chip">公共卫生</span>
+    <span class="chip acc">1 源 / 1 条</span>
+    <span class="chip hi">单源待核实</span>
+  </div>
+  <h3>Experts say ‘trusted messengers’ critical as Amish grapple with measles outbreak</h3>
+  <div class="quote">“Unfolding crisis shows importance of ‘human connections’ over the long term – especially in under-vaccinated areas Tristan Sharratt, a family nurse practitioner and public health researcher, began serving an Amish community in central New York almost inadvertently. A friend told an Amish neighbor that Sharratt was accepting new patients and was a good, solid guy. Word spread quickly, and now Sharr”<br><em>— The Guardian · World 原文摘录（点击下方链接看全文）</em></div><div class="meta" style="color:#ffa93c;margin-top:8px">⚠ 仅单一信源，未获多源印证，请点原文核实</div>
+  <details><summary>指标构成（规则计算，非结论）</summary><ul><li>独立媒体 1 家（覆盖度 10）</li><li>话题类型「公共卫生」（权重 10）</li><li>报道量 1 条（3）</li></ul></details>
+  <details><summary>全部报道（1 条，点开直达原文）</summary>
+    <ul class="src"><li><a href="https://www.theguardian.com/us-news/2026/nov/22/measles-amish-outbreak" target="_blank" rel="noreferrer">Experts say ‘trusted messengers’ critical as Amish grapple with measles outbreak</a><div class="m">The Guardian · World · Tier-2 · 2026-11-22 14:00</div></li></ul>
+  </details>
+</article>
+
+<h2 id="compare">媒体对照</h2>
+<div class="note" style="margin-bottom:10px">同一事件下并列各家原文标题，不做翻译改写、不做倾向评判，由你自己判断差异。</div>
+<article class="card">
+  <div class="meta">非洲 · 3 家媒体同题报道</div>
+  <h3 style="font-size:14px">南苏丹发生武装袭击事件，已致15名平民死亡…</h3>
+  <ul class="src"><li><span class="m">界面新闻（zh）</span><br><a href="https://www.jiemian.com/article/15359344.html" target="_blank" rel="noreferrer">南苏丹发生武装袭击事件，已致15名平民死亡</a></li><li><span class="m">BBC World（en）</span><br><a href="https://www.bbc.co.uk/news/articles/cr894gjz0j0yo?at_medium=RSS&amp;at_campaign=rss" target="_blank" rel="noreferrer">Explosion on Russian ship at Libya port caused by suspected drone attack, officials say</a></li><li><span class="m">Al Jazeera（en）</span><br><a href="https://www.aljazeera.com/news/2026/11/22/suspected-drone-strike-hits-russian-vessel-in-libya?traffic_source=rss" target="_blank" rel="noreferrer">Russian vessel hit by suspected sea drone at Libya’s Benghazi naval base</a></li><li><span class="m">Al Jazeera（en）</span><br><a href="https://www.aljazeera.com/news/2026/11/22/rsf-drones-kill-four-in-khartoum?traffic_source=rss" target="_blank" rel="noreferrer">Drone attacks kill four near Sudan’s capital, damage UN building</a></li></ul>
+</article><article class="card">
+  <div class="meta">中东 · 3 家媒体同题报道</div>
+  <h3 style="font-size:14px">伊朗革命卫队称袭击美军在巴林两处基地防空雷达…</h3>
+  <ul class="src"><li><span class="m">中新网·国际（zh）</span><br><a href="https://www.chinanews.com.cn/gj/2026/11-22/10735934.shtml" target="_blank" rel="noreferrer">伊朗革命卫队称袭击美军在巴林两处基地防空雷达</a></li><li><span class="m">The Guardian · World（en）</span><br><a href="https://www.theguardian.com/world/2026/nov/22/briton-lewis-pugh-swims-strait-of-hormuz-environment-war" target="_blank" rel="noreferrer">Briton swims length of strait of Hormuz to highlight environmental cost of war</a></li><li><span class="m">Al Jazeera（en）</span><br><a href="https://www.aljazeera.com/news/2026/11/22/houthis-report-attack-on-sanaa-as-saudi-arabia-intercepts-drone?traffic_source=rss" target="_blank" rel="noreferrer">Saudi Arabia intercepts drone, missile as Houthis report attack on Sanaa</a></li><li><span class="m">Al Jazeera（en）</span><br><a href="https://www.aljazeera.com/news/2026/11/22/iran-unveils-dual-missile-launcher-new-missile-city-what-to-know?traffic_source=rss" target="_blank" rel="noreferrer">Iran unveils dual-missile launcher, new ‘missile city’: What to know</a></li></ul>
+</article><article class="card">
+  <div class="meta">全球 · 3 家媒体同题报道</div>
+  <h3 style="font-size:14px">Nations at UN talks on AI killer robots agree to more talks but no firm commitment to rein them in…</h3>
+  <ul class="src"><li><span class="m">NPR World（en）</span><br><a href="https://www.npr.org/2026/11/21/g-s1-154914/nations-at-un-talks-on-ai-killer-robots-agree-to-more-talks-but-no-firm-commitment-to-rein-them-in" target="_blank" rel="noreferrer">Nations at UN talks on AI killer robots agree to more talks but no firm commitment to rein them in</a></li><li><span class="m">Al Jazeera（en）</span><br><a href="https://www.aljazeera.com/news/2026/11/22/countries-react-after-cop31-climate-talks-end-in-collapse?traffic_source=rss" target="_blank" rel="noreferrer">‘Disappointing’: Delegates react after COP31 climate talks end without deal</a></li><li><span class="m">Al Jazeera（en）</span><br><a href="https://www.aljazeera.com/sports/2026/11/22/bruno-fernandes-manchester-united-contract-talks-premier-league-football?traffic_source=rss" target="_blank" rel="noreferrer">Bruno Fernandes says contract talks on hold as Man United battle poor start</a></li><li><span class="m">NPR World（en）</span><br><a href="https://www.npr.org/2026/11/21/nx-s1-6047916/killer-robots-un-drones" target="_blank" rel="noreferrer">Killer robots: U.N. talks fall short of hopes for legally binding rules</a></li><li><span class="m">The Guardian · World（en）</span><br><a href="https://www.theguardian.com/environment/2026/nov/22/cop31-climate-talks-set-to-end-in-deep-division-as-key-deal-rejected" target="_blank" rel="noreferrer">Cop31 climate talks break down as key deal rejected</a></li></ul>
+</article><article class="card">
+  <div class="meta">亚太 · 2 家媒体同题报道</div>
+  <h3 style="font-size:14px">印尼一糖果厂发生火灾致3人死亡 数十人失联…</h3>
+  <ul class="src"><li><span class="m">中新网·国际（zh）</span><br><a href="https://www.chinanews.com.cn/gj/2026/11-22/10736019.shtml" target="_blank" rel="noreferrer">印尼一糖果厂发生火灾致3人死亡 数十人失联</a></li><li><span class="m">中新网·国际（zh）</span><br><a href="https://www.chinanews.com.cn/gj/2026/11-22/10736000.shtml" target="_blank" rel="noreferrer">印尼糖果厂火灾已致3人死亡</a></li><li><span class="m">界面新闻（zh）</span><br><a href="https://www.jiemian.com/article/15359413.html" target="_blank" rel="noreferrer">印尼糖果厂火灾现场整理出24个尸袋</a></li></ul>
+</article><article class="card">
+  <div class="meta">全球 · 3 家媒体同题报道</div>
+  <h3 style="font-size:14px">联合国气候变化安塔利亚大会闭幕…</h3>
+  <ul class="src"><li><span class="m">中新网·国际（zh）</span><br><a href="https://www.chinanews.com.cn/gj/2026/11-22/10736214.shtml" target="_blank" rel="noreferrer">联合国气候变化安塔利亚大会闭幕</a></li><li><span class="m">界面新闻（zh）</span><br><a href="https://www.jiemian.com/article/15359444.html" target="_blank" rel="noreferrer">联合国气候变化安塔利亚大会闭幕</a></li><li><span class="m">The Guardian · World（en）</span><br><a href="https://www.theguardian.com/environment/2026/nov/21/china-commits-low-carbon-electrification-help-others-improve" target="_blank" rel="noreferrer">China commits to low-carbon electrification and help for others to improve</a></li></ul>
+</article><article class="card">
+  <div class="meta">欧洲 · 2 家媒体同题报道</div>
+  <h3 style="font-size:14px">一艘俄罗斯船只在利比亚一海军基地遭无人机袭击…</h3>
+  <ul class="src"><li><span class="m">界面新闻（zh）</span><br><a href="https://www.jiemian.com/article/15359408.html" target="_blank" rel="noreferrer">一艘俄罗斯船只在利比亚一海军基地遭无人机袭击</a></li><li><span class="m">The Guardian · World（en）</span><br><a href="https://www.theguardian.com/world/2026/nov/22/blast-russian-ship-suspected-drone-attack-benghazi-libya" target="_blank" rel="noreferrer">Blast on Russian ship in Benghazi a suspected drone attack, say Libyan authorities</a></li></ul>
+</article><article class="card">
+  <div class="meta">全球 · 2 家媒体同题报道</div>
+  <h3 style="font-size:14px">Israeli settlers attack multiple Palestinian villages as pogroms surge…</h3>
+  <ul class="src"><li><span class="m">Al Jazeera（en）</span><br><a href="https://www.aljazeera.com/video/newsfeed/2026/11/22/israeli-settlers-attack-multiple-palestinian-villages-as-pogroms-surge?traffic_source=rss" target="_blank" rel="noreferrer">Israeli settlers attack multiple Palestinian villages as pogroms surge</a></li><li><span class="m">The Guardian · World（en）</span><br><a href="https://www.theguardian.com/world/2026/nov/21/excitement-unease-haiti-el-salvador-troops-gangs-war-bukele" target="_blank" rel="noreferrer">Haitians excited but uneasy as El Salvador troops fight gangs</a></li></ul>
+</article><article class="card">
+  <div class="meta">北美 · 2 家媒体同题报道</div>
+  <h3 style="font-size:14px">特朗普点赞中俄美元首会晤气氛“热烈”，是“多年来最具重大意义”的国际会晤之一…</h3>
+  <ul class="src"><li><span class="m">中新网·国际（zh）</span><br><a href="https://www.chinanews.com.cn/gj/2026/11-22/10736151.shtml" target="_blank" rel="noreferrer">特朗普点赞中俄美元首会晤气氛“热烈”，是“多年来最具重大意义”的国际会晤之一</a></li><li><span class="m">NPR World（en）</span><br><a href="https://www.npr.org/2026/11/21/nx-s1-6048741/what-did-xi-jinping-get-from-the-bear-hug-with-trump-at-the-shenzhen-summit" target="_blank" rel="noreferrer">What did Xi Jinping get from the bear hug with Trump at the Shenzhen summit?</a></li></ul>
+</article>
+
+<h2 id="audit">数据审计</h2>
+<table><thead><tr><th>信源</th><th>状态</th><th>条数</th><th>耗时</th></tr></thead>
+<tbody><tr><td>新华网·国际</td><td class='ok'>ok</td><td>60</td><td>1.0s</td></tr><tr><td>人民网·国际</td><td class='ok'>ok</td><td>60</td><td>0.9s</td></tr><tr><td>中新网·国际</td><td class='ok'>ok</td><td>30</td><td>0.6s</td></tr><tr><td>界面新闻</td><td class='ok'>ok</td><td>30</td><td>1.2s</td></tr><tr><td>BBC 中文</td><td class='ok'>ok</td><td>42</td><td>0.3s</td></tr><tr><td>纽约时报中文网</td><td class='ok'>ok</td><td>20</td><td>0.1s</td></tr><tr><td>BBC World</td><td class='ok'>ok</td><td>29</td><td>0.1s</td></tr><tr><td>The Guardian · World</td><td class='ok'>ok</td><td>45</td><td>0.1s</td></tr><tr><td>Al Jazeera</td><td class='ok'>ok</td><td>25</td><td>0.1s</td></tr><tr><td>NPR World</td><td class='ok'>ok</td><td>10</td><td>0.2s</td></tr></tbody></table>
+
+<h2 id="method">方法与免责</h2>
+<div class="note">
+<b>1. 内容怎么来的</b>：程序直接读取各媒体公开 RSS，只做「标题聚合 + 首段摘录」，不生成原文没有的说法，不做机器翻译，不做倾向改写。<br>
+<b>2. 风险指数是什么</b>：由「独立媒体数、话题严重度、标题伤亡/规模词、报道量、是否出现相反叙事、权威源数量」六项按固定公式相加得出，满分 100。它是<b>报道强度指标</b>，不是事实判断，也不是预测。<br>
+<b>3. 可信度怎么标</b>：只有一家媒体报道的事件标「未获多源印证」；Tier-1 指通讯社/公共广播等一级源，Tier-2 指主流市场化媒体。二者都可能是错的，请以原文为准。<br>
+<b>4. 覆盖边界</b>：本报告只覆盖国际公共事务（灾害、冲突、经济、气候、卫生、科技、事故、人道），不覆盖政治敏感议题；抓取失败的源会在上表列出，不隐藏缺口。<br>
+<b>5. 结论由谁下</b>：程序不下结论。任何判断请回到原始链接。<br>
+<b>6. 可信度分级</b>：三源以上（或含 Tier-1）为「三源以上印证」，双源为「双源报道」，单源为「单源待核实」。分级只数"有几家独立媒体说了"，不代表内容为真。
+</div>
+
+<div class="foot">
+世界脉搏 · 云端每日自动运行 · GitHub Actions · 报告为机器聚合产物<br>
+2026-11-22 生成 · 共 10 个信源 · 37 条报道 · 18 起事件
+</div>
+</div>
+<script>
+if ('serviceWorker' in navigator && location.protocol === 'https:' || location.hostname === 'localhost') {
+  navigator.serviceWorker.register('sw.js').catch(function(){});
+}
+</script>
+</body></html>

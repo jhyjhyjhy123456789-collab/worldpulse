@@ -1,0 +1,17 @@
+{
+  "name": "世界脉搏 · 每日态势简报",
+  "short_name": "世界脉搏",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#0f1216",
+  "theme_color": "#0f1216",
+  "lang": "zh-CN",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
