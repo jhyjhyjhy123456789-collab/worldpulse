@@ -1,0 +1,126 @@
+{
+  "site_dir": "site",
+  "window_hours": 36,
+  "max_items_per_source": 60,
+  "proxy": "",
+  "runtime_label": "云端每日自动运行 · GitHub Actions",
+  "public_url": "",
+  "server": {
+    "host": "0.0.0.0",
+    "port": 8848
+  },
+  "scope": {
+    "note": "只收录国际公共事务类报道：自然灾害、武装冲突、经济金融、气候能源、公共卫生、科技产业、交通事故、人道状况。非此类报道入库但不进入日报。",
+    "topic_keys": [
+      "disaster", "conflict", "diplomacy", "economy", "climate", "health", "tech", "accident", "humanitarian"
+    ]
+  },
+  "sources": [
+    {
+      "id": "xinhua_intl",
+      "name": "新华网·国际",
+      "url": "http://www.xinhuanet.com/world/news_world.xml",
+      "tier": 1,
+      "lang": "zh",
+      "use_proxy": false,
+      "enabled": true
+    },
+    {
+      "id": "people_intl",
+      "name": "人民网·国际",
+      "url": "http://www.people.com.cn/rss/world.xml",
+      "tier": 1,
+      "lang": "zh",
+      "use_proxy": false,
+      "enabled": true
+    },
+    {
+      "id": "chinanews_world",
+      "name": "中新网·国际",
+      "url": "https://www.chinanews.com.cn/rss/world.xml",
+      "tier": 1,
+      "lang": "zh",
+      "use_proxy": false,
+      "enabled": true
+    },
+    {
+      "id": "jiemian",
+      "name": "界面新闻",
+      "url": "https://a.jiemian.com/index.php?m=article&a=rss",
+      "tier": 2,
+      "lang": "zh",
+      "use_proxy": false,
+      "enabled": true
+    },
+    {
+      "id": "bbc_zh",
+      "name": "BBC 中文",
+      "url": "https://feeds.bbci.co.uk/zhongwen/simp/rss.xml",
+      "tier": 1,
+      "lang": "zh",
+      "use_proxy": false,
+      "enabled": true
+    },
+    {
+      "id": "nyt_zh",
+      "name": "纽约时报中文网",
+      "url": "https://cn.nytimes.com/rss/",
+      "tier": 2,
+      "lang": "zh",
+      "use_proxy": false,
+      "enabled": true
+    },
+    {
+      "id": "bbc_world",
+      "name": "BBC World",
+      "url": "https://feeds.bbci.co.uk/news/world/rss.xml",
+      "tier": 1,
+      "lang": "en",
+      "use_proxy": false,
+      "enabled": true
+    },
+    {
+      "id": "guardian_world",
+      "name": "The Guardian · World",
+      "url": "https://www.theguardian.com/world/rss",
+      "tier": 2,
+      "lang": "en",
+      "use_proxy": false,
+      "enabled": true
+    },
+    {
+      "id": "aljazeera",
+      "name": "Al Jazeera",
+      "url": "https://www.aljazeera.com/xml/rss/all.xml",
+      "tier": 2,
+      "lang": "en",
+      "use_proxy": false,
+      "enabled": true
+    },
+    {
+      "id": "npr_world",
+      "name": "NPR World",
+      "url": "https://feeds.npr.org/1004/rss.xml",
+      "tier": 2,
+      "lang": "en",
+      "use_proxy": false,
+      "enabled": true
+    }
+  ],
+  "notify": {
+    "desktop": { "enabled": false },
+    "feishu": { "enabled": false, "webhook": "", "secret": "" },
+    "serverchan": { "enabled": false, "sendkey": "" },
+    "pushplus": { "enabled": false, "token": "" },
+    "email": {
+      "enabled": false,
+      "smtp_host": "smtp.qq.com",
+      "smtp_port": 465,
+      "ssl": true,
+      "user": "",
+      "password": "",
+      "from": "",
+      "to": []
+    }
+  }
+}
