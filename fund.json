@@ -1,5 +1,6 @@
 {
   "runtime_label": "云端每日自动运行 · GitHub Actions",
+  "repo": "jhyjhyjhy123456789-collab/worldpulse",
   "note": "监测公开募捐页面的项目进度与捐款明细；判定新捐款以捐款 ID 为准，首次运行只建立基线。",
   "campaigns": [
     {
