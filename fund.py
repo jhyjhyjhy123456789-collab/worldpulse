@@ -277,6 +277,11 @@ def time_text(iso):
         return iso[:16]
 
 
+def date_text(s):
+    """发起日期只显示年月日，不做时区换算"""
+    return str(s or "")[:10] or "—"
+
+
 def esc(s):
     return (str(s or "").replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;"));
 
@@ -348,7 +353,7 @@ def render(results, run_at, cfg):
     </div>
     <div class="meta">捐款人 {r['donors'] if r['donors'] is not None else '—'} 位
       · 页面内可见明细 {r['embedded']} 笔
-      · 发起 {time_text(r['created_at'])}</div>
+      · 发起 {date_text(r['created_at'])}</div>
     <div class="delta">{delta_txt}</div>
     {new_block}
     <div class="meta"><a href="{esc(r['url'])}" target="_blank" rel="noopener">打开原页面 ↗</a></div>
