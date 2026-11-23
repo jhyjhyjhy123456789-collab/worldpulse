@@ -1,0 +1,276 @@
+{
+  "date": "2026-11-24",
+  "items": [
+    {
+      "id": 746,
+      "title": "苏丹首都遭无人机袭击造成4人死亡",
+      "region": "africa",
+      "region_label": "非洲",
+      "risk": 46,
+      "sources": [
+        "中新网·国际"
+      ],
+      "titles": [
+        "苏丹首都遭无人机袭击造成4人死亡"
+      ]
+    },
+    {
+      "id": 747,
+      "title": "Zelenskyy says Ukraine was behind drone attacks on Russian ships off Libya",
+      "region": "europe",
+      "region_label": "欧洲",
+      "risk": 44,
+      "sources": [
+        "Al Jazeera"
+      ],
+      "titles": [
+        "Zelenskyy says Ukraine was behind drone attacks on Russian ships off Libya",
+        "Ukraine claims drone strikes on Russian ships off Libya: What do we know?",
+        "Russian ship attacked by drone in Baltic Sea off Finland"
+      ]
+    },
+    {
+      "id": 755,
+      "title": "Russia-bound ship still on fire after attack in Gulf of Finland",
+      "region": "europe",
+      "region_label": "欧洲",
+      "risk": 43,
+      "sources": [
+        "BBC World"
+      ],
+      "titles": [
+        "Russia-bound ship still on fire after attack in Gulf of Finland"
+      ]
+    },
+    {
+      "id": 754,
+      "title": "Explosion on Russian ship at Libya port likely caused by drone attack, officials say",
+      "region": "africa",
+      "region_label": "非洲",
+      "risk": 43,
+      "sources": [
+        "BBC World"
+      ],
+      "titles": [
+        "Explosion on Russian ship at Libya port likely caused by drone attack, officials say"
+      ]
+    },
+    {
+      "id": 751,
+      "title": "泽连斯基敦促美国提供“爱国者”导弹 乌军一周袭击俄8处石油设施",
+      "region": "namerica",
+      "region_label": "北美",
+      "risk": 43,
+      "sources": [
+        "中新网·国际"
+      ],
+      "titles": [
+        "泽连斯基敦促美国提供“爱国者”导弹 乌军一周袭击俄8处石油设施"
+      ]
+    },
+    {
+      "id": 749,
+      "title": "菲律宾南部官员住宅遭火箭弹袭击 数百居民再度撤离",
+      "region": "apac",
+      "region_label": "亚太",
+      "risk": 43,
+      "sources": [
+        "中新网·国际"
+      ],
+      "titles": [
+        "菲律宾南部官员住宅遭火箭弹袭击 数百居民再度撤离"
+      ]
+    },
+    {
+      "id": 757,
+      "title": "南苏丹发生武装袭击事件，已致15名平民死亡",
+      "region": "africa",
+      "region_label": "非洲",
+      "risk": 41,
+      "sources": [
+        "界面新闻"
+      ],
+      "titles": [
+        "南苏丹发生武装袭击事件，已致15名平民死亡"
+      ]
+    },
+    {
+      "id": 778,
+      "title": "Israeli settlers attack several Palestinian villages in occupied West Bank",
+      "region": "global",
+      "region_label": "全球",
+      "risk": 38,
+      "sources": [
+        "Al Jazeera"
+      ],
+      "titles": [
+        "Israeli settlers attack several Palestinian villages in occupied West Bank"
+      ]
+    },
+    {
+      "id": 776,
+      "title": "Saudi Arabia intercepts drone, missile as Houthis report attack on Sanaa",
+      "region": "meast",
+      "region_label": "中东",
+      "risk": 38,
+      "sources": [
+        "Al Jazeera"
+      ],
+      "titles": [
+        "Saudi Arabia intercepts drone, missile as Houthis report attack on Sanaa"
+      ]
+    },
+    {
+      "id": 773,
+      "title": "Iran unveils dual-missile launcher, new ‘missile city’: What to know",
+      "region": "meast",
+      "region_label": "中东",
+      "risk": 38,
+      "sources": [
+        "Al Jazeera"
+      ],
+      "titles": [
+        "Iran unveils dual-missile launcher, new ‘missile city’: What to know"
+      ]
+    },
+    {
+      "id": 772,
+      "title": "一艘俄罗斯船只在利比亚一海军基地遭无人机袭击",
+      "region": "europe",
+      "region_label": "欧洲",
+      "risk": 38,
+      "sources": [
+        "界面新闻"
+      ],
+      "titles": [
+        "一艘俄罗斯船只在利比亚一海军基地遭无人机袭击"
+      ]
+    },
+    {
+      "id": 771,
+      "title": "Drone attacks kill four near Sudan’s capital, damage UN building",
+      "region": "africa",
+      "region_label": "非洲",
+      "risk": 38,
+      "sources": [
+        "Al Jazeera"
+      ],
+      "titles": [
+        "Drone attacks kill four near Sudan’s capital, damage UN building"
+      ]
+    },
+    {
+      "id": 770,
+      "title": "Russian warship sinks in Benghazi after suspected Ukrainian drone attack",
+      "region": "europe",
+      "region_label": "欧洲",
+      "risk": 38,
+      "sources": [
+        "The Guardian · World"
+      ],
+      "titles": [
+        "Russian warship sinks in Benghazi after suspected Ukrainian drone attack"
+      ]
+    },
+    {
+      "id": 764,
+      "title": "Why is Bangladesh’s Grameen Bank under attack?",
+      "region": "southasia",
+      "region_label": "南亚",
+      "risk": 38,
+      "sources": [
+        "Al Jazeera"
+      ],
+      "titles": [
+        "Why is Bangladesh’s Grameen Bank under attack?"
+      ]
+    },
+    {
+      "id": 763,
+      "title": "Next issues cyber-attack warning after ‘benign’ data accessed by hackers",
+      "region": "global",
+      "region_label": "全球",
+      "risk": 38,
+      "sources": [
+        "The Guardian · World"
+      ],
+      "titles": [
+        "Next issues cyber-attack warning after ‘benign’ data accessed by hackers"
+      ]
+    },
+    {
+      "id": 762,
+      "title": "Iran threatens response to any attack amid naval blockade",
+      "region": "meast",
+      "region_label": "中东",
+      "risk": 38,
+      "sources": [
+        "Al Jazeera"
+      ],
+      "titles": [
+        "Iran threatens response to any attack amid naval blockade"
+      ]
+    },
+    {
+      "id": 761,
+      "title": "胡塞武装称沙特主导的联军空袭也门多地",
+      "region": "meast",
+      "region_label": "中东",
+      "risk": 38,
+      "sources": [
+        "界面新闻"
+      ],
+      "titles": [
+        "胡塞武装称沙特主导的联军空袭也门多地"
+      ]
+    },
+    {
+      "id": 758,
+      "title": "Leaked data shows more than 1,000 Russian military suicides during Ukraine war",
+      "region": "europe",
+      "region_label": "欧洲",
+      "risk": 38,
+      "sources": [
+        "The Guardian · World"
+      ],
+      "titles": [
+        "Leaked data shows more than 1,000 Russian military suicides during Ukraine war"
+      ]
+    }
+  ],
+  "ai": {
+    "overview_zh": "近期，全球多个地区发生无人机袭击事件，造成人员伤亡和财产损失，其中非洲和中东地区尤为突出。",
+    "key_developments": [
+      {
+        "title": "苏丹首都遭无人机袭击，造成4人死亡",
+        "why": "这是近期非洲地区发生的重大安全事件之一，显示无人机袭击威胁仍在持续。"
+      },
+      {
+        "title": "俄罗斯船只在利比亚遭无人机袭击",
+        "why": "这显示了无人机袭击对国际航运安全的威胁，以及国际社会对这一威胁的反应。"
+      },
+      {
+        "title": "南苏丹发生武装袭击事件，造成15名平民死亡",
+        "why": "这表明该地区仍存在武装冲突和暴力事件，对平民安全构成威胁。"
+      }
+    ],
+    "regional_focus": [
+      {
+        "region": "非洲",
+        "note": "近期非洲地区发生多起无人机袭击事件，造成人员伤亡。"
+      },
+      {
+        "region": "中东",
+        "note": "中东地区也发生多起无人机袭击事件，显示该地区仍存在安全威胁。"
+      }
+    ],
+    "watchlist": [
+      "以色列定居者在西岸对巴勒斯坦村庄发动攻击",
+      "沙特阿拉伯拦截无人机和导弹，回应胡塞组织对萨那的袭击",
+      "伊朗展示新型导弹系统"
+    ],
+    "uncertainty": "信息来源多为新闻报道，部分事件细节尚不明确。",
+    "confidence": 0,
+    "_model": "qwen2.5:3b"
+  }
+}
