@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0f1216">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>世界脉搏 · 2026-11-27</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icon.svg">
+<style>
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+:root{--bg:#0f1216;--panel:#171c23;--line:#262c36;--txt:#e8ecf2;--dim:#9aa4b2;
+--acc:#4da3ff;--hi:#ff5c5c;--mid:#ffa93c;--lo:#3ddc97;--chip:#1f2630}
+html,body{margin:0;padding:0;background:var(--bg);color:var(--txt);
+font-family:-apple-system,"PingFang SC","Microsoft YaHei UI","Microsoft YaHei",system-ui,sans-serif;
+font-size:15px;line-height:1.62;-webkit-font-smoothing:antialiased}
+.wrap{max-width:760px;margin:0 auto;padding:0 14px 56px}
+header{padding:26px 0 18px}
+.brand{display:flex;align-items:center;gap:9px;font-size:13px;color:var(--dim);letter-spacing:2px}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--acc);box-shadow:0 0 10px var(--acc)}
+h1{font-size:25px;margin:10px 0 4px;font-weight:650;letter-spacing:.5px}
+.date{color:var(--dim);font-size:13px}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin:16px 0 22px}
+.kpi{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:11px 10px}
+.kpi b{display:block;font-size:21px;font-weight:650;line-height:1.2}
+.kpi span{font-size:11px;color:var(--dim)}
+nav{position:sticky;top:0;z-index:9;background:rgba(15,18,22,.88);backdrop-filter:blur(10px);
+display:flex;gap:8px;overflow-x:auto;padding:9px 0;margin:0 -14px 18px;padding-left:14px;scrollbar-width:none}
+nav::-webkit-scrollbar{display:none}
+nav a{flex:0 0 auto;font-size:12.5px;color:var(--dim);text-decoration:none;border:1px solid var(--line);
+border-radius:20px;padding:5px 12px;background:var(--panel)}
+h2{font-size:15px;margin:30px 0 12px;font-weight:600;color:var(--txt);
+display:flex;align-items:center;gap:8px}
+h2::before{content:"";width:3px;height:14px;background:var(--acc);border-radius:2px}
+.lead{background:linear-gradient(165deg,#1b2635,#141a22);border:1px solid #2b3646;border-radius:14px;
+padding:14px 16px;margin-bottom:11px}
+.lead .t{font-size:15.5px;font-weight:600;margin-bottom:6px}
+.lead .s{font-size:12.5px;color:var(--dim)}
+.lead .q{font-size:13px;color:#c7d2e0;margin:8px 0 4px;padding-left:10px;border-left:2px solid #35506e}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.chip{font-size:11px;padding:2px 8px;border-radius:20px;background:var(--chip);color:#b9c4d2;border:1px solid var(--line)}
+.chip.hi{background:rgba(255,92,92,.13);color:#ff8a8a;border-color:rgba(255,92,92,.32)}
+.chip.mid{background:rgba(255,169,60,.13);color:#ffc070;border-color:rgba(255,169,60,.3)}
+.chip.lo{background:rgba(61,220,151,.12);color:#7ff0bd;border-color:rgba(61,220,151,.28)}
+.chip.acc{background:rgba(77,163,255,.13);color:#8cc4ff;border-color:rgba(77,163,255,.3)}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:14px 15px;margin-bottom:11px}
+.card h3{margin:0 0 6px;font-size:15px;font-weight:600;line-height:1.45}
+.meta{font-size:12px;color:var(--dim);margin-bottom:2px}
+.quote{font-size:13px;color:#cfd8e4;margin:9px 0 0;padding:9px 11px;background:#12171d;
+border-radius:9px;border-left:2px solid #2f4a68}
+.quote em{color:#7f8b9b;font-style:normal;font-size:11.5px}
+.src{margin:10px 0 0;padding:0;list-style:none}
+.src li{padding:7px 0;border-top:1px solid var(--line);font-size:12.5px}
+.src li:first-child{border-top:0}
+.src a{color:#9ecbff;text-decoration:none;word-break:break-all}
+.src .m{color:var(--dim);font-size:11.5px}
+details{margin-top:9px}
+summary{cursor:pointer;font-size:12px;color:var(--acc);list-style:none}
+summary::-webkit-details-marker{display:none}
+details ul{margin:8px 0 0;padding-left:16px;color:var(--dim);font-size:12px}
+.region{display:grid;grid-template-columns:repeat(2,1fr);gap:9px}
+.rc{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:12px}
+.rc .n{font-size:13px;font-weight:600;display:flex;justify-content:space-between;align-items:center}
+.rc .v{font-size:12px;color:var(--dim);margin-top:5px}
+.bar{height:4px;border-radius:3px;background:#232a34;margin-top:9px;overflow:hidden}
+.bar i{display:block;height:100%;border-radius:3px}
+table{width:100%;border-collapse:collapse;font-size:12px;background:var(--panel);
+border:1px solid var(--line);border-radius:12px;overflow:hidden}
+th,td{padding:8px 9px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:var(--dim);font-weight:500;background:#141920}
+.ok{color:var(--lo)}.bad{color:var(--hi)}
+.note{font-size:12px;color:var(--dim);background:#12171d;border:1px dashed #2c3540;
+border-radius:12px;padding:12px 14px;margin-top:10px}
+.foot{margin-top:34px;font-size:11.5px;color:#78828f;line-height:1.7;border-top:1px solid var(--line);padding-top:16px}
+a.plain{color:inherit;text-decoration:none}
+@media (max-width:420px){.kpis{grid-template-columns:repeat(2,1fr)}h1{font-size:23px}}
+</style>
+</head><body><div class="wrap">
+<header>
+  <div class="brand"><span class="dot"></span>WORLD PULSE · 每日态势简报</div>
+  <h1>2026-11-27 国际态势</h1>
+  <div class="date">生成于 2026-11-27 14:09 · 数据窗口过去 36 小时 · 全部内容可溯源</div>
+  <div class="date" style="color:#4da3ff">较昨日：事件 ▲ 2 · 报道 76（昨日 2026-11-26 为 39 起 / 132 条）</div>
+</header>
+
+<div class="kpis">
+  <div class="kpi"><b>208</b><span>收录报道</span></div>
+  <div class="kpi"><b>41</b><span>识别事件</span></div>
+  <div class="kpi"><b>8</b><span>高关注度</span></div>
+  <div class="kpi"><b>44/46</b><span>信源可用</span></div>
+</div>
+<nav>
+  <a href="#lead">今日要点</a><a href="#watch">专项监测</a><a href="#regions">地区态势</a>
+  <a href="#topics">话题热度</a>
+  <a href="#events">事件全景</a><a href="#compare">媒体对照</a>
+  <a href="#audit">数据审计</a><a href="#method">方法与免责</a>
+</nav>
+
+<h2 id="lead">今日要点</h2>
+<div class="lead">
+  <div class="t">Yemeni army reports clashes 80 kilometers from Sanaa as casualties exceed 13,000 since August</div>
+  <div class="s">全球 · 武装冲突 ·
+    13 家媒体 · 20 条报道 · 风险指数 100</div>
+  <div class="chips">
+    <span class="chip hi">关注度 高</span>
+    <span class="chip">全球</span>
+    <span class="chip">武装冲突</span>
+  </div><div class="q">“Army reports clashes with the Houthis in Marib and Al-Jawf and airstrikes on the group’s positions in Taiz”<br><em>— Anadolu · English 原文摘录</em></div>
+</div><div class="lead">
+  <div class="t">伊朗否认袭击科威特致两意大利人死亡 提议三国联合调查</div>
+  <div class="s">欧洲 · 武装冲突 ·
+    12 家媒体 · 33 条报道 · 风险指数 100</div>
+  <div class="chips">
+    <span class="chip hi">关注度 高</span>
+    <span class="chip">欧洲</span>
+    <span class="chip">武装冲突</span>
+  </div><div class="q">“中新社北京11月27日电 德黑兰消息：当地时间26日，伊朗否认袭击科威特，并表示愿与科威特、意大利开展联合调查，以查明事件原因。”<br><em>— 中新网·国际 原文摘录</em></div>
+</div><div class="lead">
+  <div class="t">Libya’s Presidential Council head calls for probe into Benghazi port attack</div>
+  <div class="s">非洲 · 武装冲突 ·
+    4 家媒体 · 5 条报道 · 风险指数 93</div>
+  <div class="chips">
+    <span class="chip hi">关注度 高</span>
+    <span class="chip">非洲</span>
+    <span class="chip">武装冲突</span>
+  </div><div class="q">“Mohamed al-Menfi stressed the need to prevent similar incidents and avoid further escalation”<br><em>— TASS · English 原文摘录</em></div>
+</div>
+
+<h2 id="watch">专项监测</h2>
+<div class="note" style="margin-bottom:10px">对指定的公开募捐页面做独立监测，只记录项目进度与公开显示的捐款明细（新捐款按捐款 ID 判定），不含评论或推断。</div>
+<a href="fund.html" style="display:block;background:#161b22;border:1px solid #253040;border-radius:10px;padding:12px 14px;margin:8px 0;color:#58a6ff;text-decoration:none;font-size:14px">募捐页面监测 · 5 个境外项目 →<div style="color:#8b98a9;font-size:12px;margin-top:4px">项目进度、新增捐款、捐款人明细（公开信息，仅作事实记录）</div></a>
+
+<h2 id="regions">地区态势</h2>
+<div class="region"><div class="rc">
+  <div class="n"><span>亚太</span><span style="color:var(--lo);font-size:12px">7 起</span></div>
+  <div class="v">韩国央行将基准利率上调至3.25%</div>
+  <div class="bar"><i style="width:36%;background:var(--lo)"></i></div>
+  <div class="v">平均风险 36 · 最高 55 · 较昨日 +1</div>
+</div><div class="rc">
+  <div class="n"><span>南亚</span><span style="color:var(--lo);font-size:12px">2 起</span></div>
+  <div class="v">Nepal and UN roll out $49.94m flood defense for Himalayan communities</div>
+  <div class="bar"><i style="width:30%;background:var(--lo)"></i></div>
+  <div class="v">平均风险 30 · 最高 38 · 较昨日 +1</div>
+</div><div class="rc">
+  <div class="n"><span>中东</span><span style="color:var(--mid);font-size:12px">4 起</span></div>
+  <div class="v">也门胡塞武装称袭击沙特两个港口</div>
+  <div class="bar"><i style="width:47%;background:var(--mid)"></i></div>
+  <div class="v">平均风险 47 · 最高 91 · 较昨日 +0</div>
+</div><div class="rc">
+  <div class="n"><span>欧洲</span><span style="color:var(--mid);font-size:12px">5 起</span></div>
+  <div class="v">伊朗否认袭击科威特致两意大利人死亡 提议三国联合调查</div>
+  <div class="bar"><i style="width:55%;background:var(--mid)"></i></div>
+  <div class="v">平均风险 55 · 最高 100 · 较昨日 -1</div>
+</div><div class="rc">
+  <div class="n"><span>非洲</span><span style="color:var(--lo);font-size:12px">5 起</span></div>
+  <div class="v">Libya’s Presidential Council head calls for probe into Benghazi port attack</div>
+  <div class="bar"><i style="width:43%;background:var(--lo)"></i></div>
+  <div class="v">平均风险 43 · 最高 93 · 较昨日 +0</div>
+</div><div class="rc">
+  <div class="n"><span>北美</span><span style="color:var(--lo);font-size:12px">9 起</span></div>
+  <div class="v">US envoy says largest prisoner swap of Russia-Ukraine war to take place &#x27;very soon, before the holidays&#x27;</div>
+  <div class="bar"><i style="width:44%;background:var(--lo)"></i></div>
+  <div class="v">平均风险 44 · 最高 85 · 较昨日 +3</div>
+</div><div class="rc">
+  <div class="n"><span>拉美</span><span style="color:var(--lo);font-size:12px">1 起</span></div>
+  <div class="v">‘Terrorist attack’ caused major blackout in Colombia, president says</div>
+  <div class="bar"><i style="width:38%;background:var(--lo)"></i></div>
+  <div class="v">平均风险 38 · 最高 38 · 较昨日 -2</div>
+</div><div class="rc">
+  <div class="n"><span>全球</span><span style="color:var(--mid);font-size:12px">8 起</span></div>
+  <div class="v">Yemeni army reports clashes 80 kilometers from Sanaa as casualties exceed 13,000 since August</div>
+  <div class="bar"><i style="width:64%;background:var(--mid)"></i></div>
+  <div class="v">平均风险 64 · 最高 100 · 较昨日 +0</div>
+</div></div>
+
+<h2 id="topics">话题热度</h2>
+<div class="note" style="margin-bottom:10px">按事件数与平均风险排序，反映当天国际报道的注意力分布，不代表事件重要性排序。</div>
+<table><thead><tr><th>话题</th><th>事件</th><th>报道</th><th>平均风险</th></tr></thead><tbody><tr><td>武装冲突</td><td>7</td><td>90</td><td class='bad'>78</td></tr><tr><td>外交关系</td><td>7</td><td>33</td><td class='ok'>45</td></tr><tr><td>气候能源</td><td>6</td><td>16</td><td class='ok'>38</td></tr><tr><td>事故灾难</td><td>5</td><td>20</td><td class='ok'>42</td></tr><tr><td>经济金融</td><td>5</td><td>15</td><td class='ok'>38</td></tr><tr><td>自然灾害</td><td>4</td><td>8</td><td class='ok'>54</td></tr><tr><td>科技产业</td><td>3</td><td>19</td><td class='ok'>34</td></tr><tr><td>公共卫生</td><td>2</td><td>4</td><td class='ok'>38</td></tr><tr><td>人道状况</td><td>2</td><td>3</td><td class='ok'>29</td></tr></tbody></table>
+
+<h2 id="events">事件全景（41）</h2>
+<article class="card">
+  <div class="chips" style="margin:0 0 8px">
+    <span class="chip hi">高 · 100</span>
+    <span class="chip">全球</span>
+    <span class="chip">武装冲突</span>
+    <span class="chip acc">13 源 / 20 条</span>
+    <span class="chip lo">三源以上印证</span>
+  </div>
+  <h3>Yemeni army reports clashes 80 kilometers from Sanaa as casualties exceed 13,000 since August</h3>
+  <div class="quote">“Army reports clashes with the Houthis in Marib and Al-Jawf and airstrikes on the group’s positions in Taiz”<br><em>— Anadolu · English 原文摘录（点击下方链接看全文）</em></div>
+  <details><summary>指标构成（规则计算，非结论）</summary><ul><li>独立媒体 13 家（覆盖度 30）</li><li>话题类型「武装冲突」（权重 25）</li><li>标题含伤亡/规模类表述（15）</li><li>报道量 20 条（20）</li><li>权威源（Tier-1）3 家（+10）</li></ul></details>
+  <details><summary>全部报道（20 条，点开直达原文）</summary>
+    <ul class="src"><li><a href="https://www.aa.com.tr/en/middle-east/yemeni-army-reports-clashes-80-kilometers-from-sanaa-as-casualties-exceed-13-000-since-august/4139629" target="_blank" rel="noreferrer">Yemeni army reports clashes 80 kilometers from Sanaa as casualties exceed 13,000 since August</a><div class="m">Anadolu · English · Tier-1 · 2026-11-27 03:35</div></li><li><a href="https://tass.com/world/2225011" target="_blank" rel="noreferrer">UK calls on reservists to volunteer for military exercises for first time since Cold War</a><div class="m">TASS · English · Tier-1 · 2026-11-26 14:08</div></li><li><a href="https://www.bbc.co.uk/news/articles/cqvg2nlr8kd8o?at_medium=RSS&amp;at_campaign=rss" target="_blank" rel="noreferrer">Met Police ruined my life, says Kenyan man wrongly sentenced over attack on UK couple</a><div class="m">BBC World · Tier-1 · 2026-11-27 08:48</div></li><li><a href="https://tass.com/emergencies/2225599" target="_blank" rel="noreferrer">Four killed, six wounded in Ukrainian drone attacks on DPR in past day</a><div class="m">TASS · English · Tier-1 · 2026-11-27 07:56</div></li><li><a href="https://www.aa.com.tr/en/middle-east/sudanese-army-says-it-shoots-down-drone-in-south-kordofan/4138167" target="_blank" rel="noreferrer">Sudanese army says it shoots down drone in South Kordofan</a><div class="m">Anadolu · English · Tier-1 · 2026-11-26 13:54</div></li><li><a href="https://www.koreaherald.com/article/10951684" target="_blank" rel="noreferrer">N. Korean troops cross inter-Korean border about 40 times over past 2 months: lawmaker</a><div class="m">Korea Herald · Tier-2 · 2026-11-27 11:35</div></li><li><a href="https://www.japantimes.co.jp/sports/2026/11/27/more-sports/george-russell-max-verstappen-spat/" target="_blank" rel="noreferrer">George Russell not interested in war of words with Max Verstappen after ‘amusing’ spat</a><div class="m">Japan Times · Tier-2 · 2026-11-27 10:00</div></li><li><a href="https://www.themoscowtimes.com/2026/11/26/ukrainian-drone-strike-sparks-fire-and-inflicts-serious-damage-at-krasnodar-a812387" target="_blank" rel="noreferrer">Ukrainian Drone Strike Sparks Fire and Inflicts Serious Damage at Krasnodar Refinery</a><div class="m">Moscow Times · Tier-2 · 2026-11-26 23:59</div></li></ul>
+  </details>
+</article><article class="card">
+  <div class="chips" style="margin:0 0 8px">
+    <span class="chip hi">高 · 100</span>
+    <span class="chip">欧洲</span>
+    <span class="chip">武装冲突</span>
+    <span class="chip acc">12 源 / 33 条</span>
+    <span class="chip lo">三源以上印证</span>
+  </div>
+  <h3>伊朗否认袭击科威特致两意大利人死亡 提议三国联合调查</h3>
+  <div class="quote">“中新社北京11月27日电 德黑兰消息：当地时间26日，伊朗否认袭击科威特，并表示愿与科威特、意大利开展联合调查，以查明事件原因。”<br><em>— 中新网·国际 原文摘录（点击下方链接看全文）</em></div><div class="meta" style="color:#ffa93c;margin-top:6px">⚠ 不同媒体在升级/缓和倾向上表述不一，已并列呈现各方标题</div>
+  <details><summary>指标构成（规则计算，非结论）</summary><ul><li>独立媒体 12 家（覆盖度 30）</li><li>话题类型「武装冲突」（权重 25）</li><li>标题含伤亡/规模类表述（9）</li><li>报道量 33 条（20）</li><li>不同媒体同时出现「升级」与「缓和」类表述（分歧 +10）</li><li>权威源（Tier-1）3 家（+10）</li></ul></details>
+  <details><summary>全部报道（33 条，点开直达原文）</summary>
+    <ul class="src"><li><a href="https://www.chinanews.com.cn/gj/2026/11-27/10738565.shtml" target="_blank" rel="noreferrer">伊朗否认袭击科威特致两意大利人死亡 提议三国联合调查</a><div class="m">中新网·国际 · Tier-1 · 2026-11-27 10:58</div></li><li><a href="https://www.chinanews.com.cn/gj/2026/11-27/10738507.shtml" target="_blank" rel="noreferrer">2名意籍工程师遇袭身亡，中东冲突波及到了普通欧洲民众</a><div class="m">中新网·国际 · Tier-1 · 2026-11-27 08:59</div></li><li><a href="https://www.chinanews.com.cn/gj/2026/11-27/10738482.shtml" target="_blank" rel="noreferrer">科威特称伊朗袭击该国致两名意大利人身亡，伊朗否认</a><div class="m">中新网·国际 · Tier-1 · 2026-11-27 07:25</div></li><li><a href="https://www.chinanews.com.cn/gj/2026/11-26/10738469.shtml" target="_blank" rel="noreferrer">两名意大利公民在伊朗无人机袭击科威特事件中身亡</a><div class="m">中新网·国际 · Tier-1 · 2026-11-26 22:49</div></li><li><a href="https://news.cgtn.com/news/2026-11-26/Meloni-talks-tough-on-EU-budget-warns-of-Ukraine-conflict-spillover-1SoqyfmquGI/p.html?UTM_Source=cgtn&amp;UTM_Medium=rss&amp;UTM_Campaign=World" target="_blank" rel="noreferrer">Meloni talks tough on EU budget, warns of Ukraine conflict spillover</a><div class="m">CGTN · World · Tier-2 · 2026-11-26 22:40</div></li><li><a href="https://tass.com/politics/2225641" target="_blank" rel="noreferrer">Victims of EU-Kiev ‘drone coalition’ account for 90% of all civilian casualties — diplomat</a><div class="m">TASS · English · Tier-1 · 2026-11-27 12:50</div></li><li><a href="https://tass.com/society/2225065" target="_blank" rel="noreferrer">FSB thwarts Kiev’s plot to carry out terrorist attack on Russian service member in Sochi</a><div class="m">TASS · English · Tier-1 · 2026-11-26 15:29</div></li><li><a href="https://tass.com/world/2225575" target="_blank" rel="noreferrer">Wadephul opposes geographical expansion of Ukraine conflict, rising tensions in Baltics</a><div class="m">TASS · English · Tier-1 · 2026-11-27 04:52</div></li></ul>
+  </details>
+</article><article class="card">
+  <div class="chips" style="margin:0 0 8px">
+    <span class="chip hi">高 · 93</span>
+    <span class="chip">非洲</span>
+    <span class="chip">武装冲突</span>
+    <span class="chip acc">4 源 / 5 条</span>
+    <span class="chip lo">三源以上印证</span>
+  </div>
+  <h3>Libya’s Presidential Council head calls for probe into Benghazi port attack</h3>
+  <div class="quote">“Mohamed al-Menfi stressed the need to prevent similar incidents and avoid further escalation”<br><em>— TASS · English 原文摘录（点击下方链接看全文）</em></div><div class="meta" style="color:#ffa93c;margin-top:6px">⚠ 不同媒体在升级/缓和倾向上表述不一，已并列呈现各方标题</div>
+  <details><summary>指标构成（规则计算，非结论）</summary><ul><li>独立媒体 4 家（覆盖度 30）</li><li>话题类型「武装冲突」（权重 25）</li><li>标题含伤亡/规模类表述（3）</li><li>报道量 5 条（15）</li><li>不同媒体同时出现「升级」与「缓和」类表述（分歧 +10）</li><li>权威源（Tier-1）2 家（+10）</li></ul></details>
+  <details><summary>全部报道（5 条，点开直达原文）</summary>
+    <ul class="src"><li><a href="https://tass.com/world/2225579" target="_blank" rel="noreferrer">Libya’s Presidential Council head calls for probe into Benghazi port attack</a><div class="m">TASS · English · Tier-1 · 2026-11-27 05:03</div></li><li><a href="https://www.bbc.co.uk/news/articles/ck62y23z58yeo?at_medium=RSS&amp;at_campaign=rss" target="_blank" rel="noreferrer">As foreign troops withdraw from Somalia, could al-Shabab take over?</a><div class="m">BBC World · Tier-1 · 2026-11-26 10:06</div></li><li><a href="https://www.japantimes.co.jp/news/2026/11/26/world/africa-insurgents-war-drones/" target="_blank" rel="noreferrer">African insurgents take war to the skies with off-the-shelf drones</a><div class="m">Japan Times · Tier-2 · 2026-11-26 11:39</div></li><li><a href="https://www.aljazeera.com/news/2026/11/27/at-least-13-niger-soldiers-killed-in-sanam-armed-attack?traffic_source=rss" target="_blank" rel="noreferrer">At least 13 Niger soldiers killed in Sanam armed attack</a><div class="m">Al Jazeera · Tier-2 · 2026-11-27 12:06</div></li><li><a href="https://www.aljazeera.com/features/2026/11/26/war-and-drought-threaten-livelihoods-of-sudans-farmers?traffic_source=rss" target="_blank" rel="noreferrer">War and drought threaten livelihoods of Sudan’s farmers</a><div class="m">Al Jazeera · Tier-2 · 2026-11-26 14:56</div></li></ul>
+  </details>
+</article><article class="card">
+  <div class="chips" style="margin:0 0 8px">
+    <span class="chip hi">高 · 91</span>
+    <span class="chip">中东</span>
+    <span class="chip">武装冲突</span>
+    <span class="chip acc">9 源 / 22 条</span>
+    <span class="chip lo">三源以上印证</span>
+  </div>
+  <h3>也门胡塞武装称袭击沙特两个港口</h3>
+  <div class="quote">“中新网11月26日电 据法新社报道，也门胡塞武装25日称，已对沙特阿拉伯吉达港和吉赞港发动袭击，以回应沙特主导的多国联军此前对也门红海沿岸荷台达港发动的袭击。”<br><em>— 中新网·国际 原文摘录（点击下方链接看全文）</em></div>
+  <details><summary>指标构成（规则计算，非结论）</summary><ul><li>独立媒体 9 家（覆盖度 30）</li><li>话题类型「武装冲突」（权重 25）</li><li>标题含伤亡/规模类表述（6）</li><li>报道量 22 条（20）</li><li>权威源（Tier-1）4 家（+10）</li></ul></details>
+  <details><summary>全部报道（22 条，点开直达原文）</summary>
+    <ul class="src"><li><a href="https://www.chinanews.com.cn/gj/2026/11-26/10737995.shtml" target="_blank" rel="noreferrer">也门胡塞武装称袭击沙特两个港口</a><div class="m">中新网·国际 · Tier-1 · 2026-11-26 11:38</div></li><li><a href="https://www.cbc.ca/news/world/italian-workers-killed-kuwait-iran-strike-9.7437089?cmp=rss" target="_blank" rel="noreferrer">Iran denies involvement after 2 Italian technicians killed in attack on Kuwait site</a><div class="m">CBC · World · Tier-1 · 2026-11-27 00:03</div></li><li><a href="https://www.aa.com.tr/en/middle-east/syria-expresses-solidarity-with-kuwait-following-drone-attacks-blamed-on-iran/4139868" target="_blank" rel="noreferrer">Syria expresses solidarity with Kuwait following drone attacks blamed on Iran</a><div class="m">Anadolu · English · Tier-1 · 2026-11-27 09:07</div></li><li><a href="https://tass.com/world/2225555" target="_blank" rel="noreferrer">Iran offers Kuwait joint investigation into drone attack — foreign ministry</a><div class="m">TASS · English · Tier-1 · 2026-11-27 03:48</div></li><li><a href="https://tass.com/world/2224889" target="_blank" rel="noreferrer">Houthi attack causes minor damage to Saudi port of Jizan — coalition</a><div class="m">TASS · English · Tier-1 · 2026-11-26 02:33</div></li><li><a href="https://tass.com/world/2225595" target="_blank" rel="noreferrer">One person killed in Houthi attack on Saudi refinery</a><div class="m">TASS · English · Tier-1 · 2026-11-27 07:16</div></li><li><a href="https://www.aa.com.tr/en/middle-east/-israeli-drone-strikes-on-gaza-kill-6-palestinians/4138121" target="_blank" rel="noreferrer">Israeli drone strikes on Gaza kill 6 Palestinians</a><div class="m">Anadolu · English · Tier-1 · 2026-11-26 08:35</div></li><li><a href="https://www.middleeasteye.net/live-blog/live-blog-update/kushner-good-thing-about-war-gaza-does-need-be-built-so-why-build-it" target="_blank" rel="noreferrer">Kushner: &#x27;The good thing about the war is that Gaza does need to be built. So why build it into what it was?&#x27;</a><div class="m">Middle East Eye · Tier-2 · 2026-11-26 14:56</div></li></ul>
+  </details>
+</article><article class="card">
+  <div class="chips" style="margin:0 0 8px">
+    <span class="chip hi">高 · 90</span>
+    <span class="chip">全球</span>
+    <span class="chip">事故灾难</span>
+    <span class="chip acc">12 源 / 16 条</span>
+    <span class="chip lo">三源以上印证</span>
+  </div>
+  <h3>埃及吉萨省车祸引发火灾 烧毁27辆车致31人死亡</h3>
+  <div class="quote">“中新网11月26日电 综合外媒报道，埃及当局25日表示，一辆载有石油制品的卡车在埃及一条主要环路上碰撞起火后引发火灾，造成31人死亡、21人受伤。”<br><em>— 中新网·国际 原文摘录（点击下方链接看全文）</em></div>
+  <details><summary>指标构成（规则计算，非结论）</summary><ul><li>独立媒体 12 家（覆盖度 30）</li><li>话题类型「事故灾难」（权重 15）</li><li>标题含伤亡/规模类表述（15）</li><li>报道量 16 条（20）</li><li>权威源（Tier-1）4 家（+10）</li></ul></details>
+  <details><summary>全部报道（16 条，点开直达原文）</summary>
+    <ul class="src"><li><a href="https://www.chinanews.com.cn/gj/2026/11-26/10737865.shtml" target="_blank" rel="noreferrer">埃及吉萨省车祸引发火灾 烧毁27辆车致31人死亡</a><div class="m">中新网·国际 · Tier-1 · 2026-11-26 07:32</div></li><li><a href="https://www.bbc.co.uk/news/articles/cqwy4377yxnlo?at_medium=RSS&amp;at_campaign=rss" target="_blank" rel="noreferrer">Guinea orders residents to clean up the capital months after deadly rubbish dump collapse</a><div class="m">BBC World · Tier-1 · 2026-11-26 15:43</div></li><li><a href="https://www.bbc.co.uk/news/articles/c3gre90l0g45o?at_medium=RSS&amp;at_campaign=rss" target="_blank" rel="noreferrer">Egyptian authorities arrest motorist over tanker crash that killed 31</a><div class="m">BBC World · Tier-1 · 2026-11-26 20:16</div></li><li><a href="https://www.abc.net.au/news/2026-11-26/lidcombe-attempted-kidnapping-men-charged-amid-further-arrests/107430090" target="_blank" rel="noreferrer">Witness recounts dramatic &#x27;crash tackle&#x27; arrest of balaclava-clad men</a><div class="m">ABC Australia · Tier-1 · 2026-11-26 12:09</div></li><li><a href="https://www.bbc.co.uk/news/articles/crx209kwk4kzo?at_medium=RSS&amp;at_campaign=rss" target="_blank" rel="noreferrer">Nine injured, three critically, after Bangkok oil refinery explosion</a><div class="m">BBC World · Tier-1 · 2026-11-27 00:21</div></li><li><a href="https://www.aa.com.tr/en/middle-east/explosion-reported-near-tanker-west-of-dubai-uk-maritime-agency/4138116" target="_blank" rel="noreferrer">Explosion reported near tanker west of Dubai: UK maritime agency</a><div class="m">Anadolu · English · Tier-1 · 2026-11-26 07:34</div></li><li><a href="https://www.dawn.com/news/2047189/sbca-chief-removed-as-cm-murad-orders-sweeping-action-over-building-collapse-in-karachis-baloch-colony" target="_blank" rel="noreferrer">SBCA chief removed as CM Murad orders sweeping action over building collapse in Karachi&#x27;s Baloch Colony</a><div class="m">Dawn · Pakistan · Tier-2 · 2026-11-26 23:24</div></li><li><a href="https://www.koreaherald.com/article/10950356" target="_blank" rel="noreferrer">Fuel tanker crash ignites a massive fire on a highway surrounding Cairo, killing at least 31 people</a><div class="m">Korea Herald · Tier-2 · 2026-11-26 13:40</div></li></ul>
+  </details>
+</article><article class="card">
+  <div class="chips" style="margin:0 0 8px">
+    <span class="chip hi">高 · 85</span>
+    <span class="chip">北美</span>
+    <span class="chip">武装冲突</span>
+    <span class="chip acc">5 源 / 8 条</span>
+    <span class="chip lo">三源以上印证</span>
+  </div>
+  <h3>US envoy says largest prisoner swap of Russia-Ukraine war to take place &#x27;very soon, before the holidays&#x27;</h3>
+  <div class="quote">“&#x27;We are not going to decide anything without agreement with Europe and without agreement of Ukraine,&#x27; says Jared Kushner”<br><em>— Anadolu · English 原文摘录（点击下方链接看全文）</em></div>
+  <details><summary>指标构成（规则计算，非结论）</summary><ul><li>独立媒体 5 家（覆盖度 30）</li><li>话题类型「武装冲突」（权重 25）</li><li>报道量 8 条（20）</li><li>权威源（Tier-1）2 家（+10）</li></ul></details>
+  <details><summary>全部报道（8 条，点开直达原文）</summary>
+    <ul class="src"><li><a href="https://www.aa.com.tr/en/russia-ukraine-war/us-envoy-says-largest-prisoner-swap-of-russia-ukraine-war-to-take-place-very-soon-before-the-holidays/4138130" target="_blank" rel="noreferrer">US envoy says largest prisoner swap of Russia-Ukraine war to take place &#x27;very soon, before the holidays&#x27;</a><div class="m">Anadolu · English · Tier-1 · 2026-11-26 09:49</div></li><li><a href="https://tass.com/world/2224983" target="_blank" rel="noreferrer">NATO expects US to postpone decision on withdrawing troops from Europe — news agency</a><div class="m">TASS · English · Tier-1 · 2026-11-26 09:15</div></li><li><a href="https://tass.com/world/2224967" target="_blank" rel="noreferrer">Ukrainian crisis turns into proxy war between Europe, Russia — US envoy</a><div class="m">TASS · English · Tier-1 · 2026-11-26 06:54</div></li><li><a href="https://tass.com/world/2225549" target="_blank" rel="noreferrer">US President Trump still hopes Ukraine conflict can be resolved soon</a><div class="m">TASS · English · Tier-1 · 2026-11-27 03:03</div></li><li><a href="https://www.middleeasteye.net/live-blog/live-blog-update/israel-army-spokesperson-says-its-ready-attack-iran-force-without-us" target="_blank" rel="noreferrer">Israeli army spokesperson says it’s ready to attack Iran &#x27;with force&#x27; without US backing</a><div class="m">Middle East Eye · Tier-2 · 2026-11-26 15:38</div></li><li><a href="https://www.dawn.com/news/2047188/ten-events-that-defined-2026-from-middle-east-war-to-gen-z-protests-and-ai-doom" target="_blank" rel="noreferrer">Ten events that defined 2026 from Middle East war to Gen Z protests and AI doom</a><div class="m">Dawn · Pakistan · Tier-2 · 2026-11-26 15:36</div></li><li><a href="https://www.aljazeera.com/news/2026/11/27/trump-downplays-russia-china-support-for-iran-during-talks-with-us-troops?traffic_source=rss" target="_blank" rel="noreferrer">Trump downplays Russia, China support for Iran during talks with US troops</a><div class="m">Al Jazeera · Tier-2 · 2026-11-27 11:49</div></li><li><a href="https://www.aljazeera.com/news/2026/11/26/icc-judge-kimberly-prost-tries-war-crimes-shes-a-target-of-us-sanctions?traffic_source=rss" target="_blank" rel="noreferrer">ICC judge Kimberly Prost tries war crimes. She’s a target of US sanctions</a><div class="m">Al Jazeera · Tier-2 · 2026-11-26 14:07</div></li></ul>
+  </details>
+</article><article class="card">
+  <div class="chips" style="margin:0 0 8px">
+    <span class="chip hi">高 · 70</span>
+    <span class="chip">全球</span>
+    <span class="chip">外交关系</span>
+    <span class="chip acc">7 源 / 12 条</span>
+    <span class="chip lo">三源以上印证</span>
+  </div>
+  <h3>特朗普与吕特会晤，喊话俄“避免扩大战事”</h3>
+  <div class="quote">“ANEF and 16 other organizations demand concrete responses from government after four meetings without progress in labor negotiations”<br><em>— Anadolu · English 原文摘录（点击下方链接看全文）</em></div>
+  <details><summary>指标构成（规则计算，非结论）</summary><ul><li>独立媒体 7 家（覆盖度 30）</li><li>话题类型「外交关系」（权重 10）</li><li>报道量 12 条（20）</li><li>权威源（Tier-1）3 家（+10）</li></ul></details>
+  <details><summary>全部报道（12 条，点开直达原文）</summary>
+    <ul class="src"><li><a href="https://www.jiemian.com/article/15377522.html" target="_blank" rel="noreferrer">特朗普与吕特会晤，喊话俄“避免扩大战事”</a><div class="m">界面新闻 · Tier-2 · 2026-11-26 15:13</div></li><li><a href="https://www.aa.com.tr/en/americas/chilean-public-sector-unions-call-for-nationwide-protests-over-layoffs-stalled-government-talks/4139865" target="_blank" rel="noreferrer">Chilean public sector unions call for nationwide protests over layoffs, stalled government talks</a><div class="m">Anadolu · English · Tier-1 · 2026-11-27 08:20</div></li><li><a href="https://tass.com/world/2225473" target="_blank" rel="noreferrer">Chances of agreeing EU budget at Brussels summit equal zero — Hungarian Prime Minister</a><div class="m">TASS · English · Tier-1 · 2026-11-27 00:20</div></li><li><a href="https://tass.com/world/2225625" target="_blank" rel="noreferrer">EU countries fail to reach agreement on any of three key elements of budget — Costa</a><div class="m">TASS · English · Tier-1 · 2026-11-27 10:34</div></li><li><a href="https://tass.com/world/2225609" target="_blank" rel="noreferrer">EU summit fails to approve additional 45-billion-euro financial aid to Kiev — Costa</a><div class="m">TASS · English · Tier-1 · 2026-11-27 08:29</div></li><li><a href="https://www.bbc.co.uk/news/articles/c98r7p65edvgo?at_medium=RSS&amp;at_campaign=rss" target="_blank" rel="noreferrer">New UK-EU treaty has 10-year termination clause</a><div class="m">BBC World · Tier-1 · 2026-11-26 23:23</div></li><li><a href="https://www.rfi.fr/en/france/20261125-digital-tax-and-farm-aid-at-stake-as-eu-budget-talks-resume" target="_blank" rel="noreferrer">Digital tax and farm aid at stake as EU budget talks resume</a><div class="m">RFI · English · Tier-2 · 2026-11-26 04:21</div></li><li><a href="https://www.politico.eu/article/eu-budget-summit-walkout-antonio-costa-leaves-one-month-negotiations-drama/?utm_source=RSS_Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication" target="_blank" rel="noreferrer">Budget summit walkout leaves EU one month to salvage deal</a><div class="m">Politico EU · Tier-2 · 2026-11-27 10:50</div></li></ul>
+  </details>
+</article><article class="card">
+  <div class="chips" style="margin:0 0 8px">
+    <span class="chip hi">高 · 70</span>
+    <span class="chip">欧洲</span>
+    <span class="chip">外交关系</span>
+    <span class="chip acc">7 源 / 11 条</span>
+    <span class="chip lo">三源以上印证</span>
+  </div>
+  <h3>特朗普：与普京会谈中，已敦促其尽快与乌克兰达成协议</h3>
+  <div class="quote">“中新网11月27日电 综合报道，美国总统特朗普当地时间26日在社交媒体发文表示，他日前在与俄罗斯总统普京的会谈中敦促其尽快与乌克兰达成协议，以结束俄乌冲突。”<br><em>— 中新网·国际 原文摘录（点击下方链接看全文）</em></div>
+  <details><summary>指标构成（规则计算，非结论）</summary><ul><li>独立媒体 7 家（覆盖度 30）</li><li>话题类型「外交关系」（权重 10）</li><li>报道量 11 条（20）</li><li>权威源（Tier-1）2 家（+10）</li></ul></details>
+  <details><summary>全部报道（11 条，点开直达原文）</summary>
+    <ul class="src"><li><a href="https://www.chinanews.com.cn/gj/2026/11-27/10738478.shtml" target="_blank" rel="noreferrer">特朗普：与普京会谈中，已敦促其尽快与乌克兰达成协议</a><div class="m">中新网·国际 · Tier-1 · 2026-11-27 07:02</div></li><li><a href="https://www.chinanews.com.cn/gj/2026/11-27/10738474.shtml" target="_blank" rel="noreferrer">特朗普：在与普京会谈中敦促其尽快与乌克兰达成协议</a><div class="m">中新网·国际 · Tier-1 · 2026-11-27 06:37</div></li><li><a href="https://www.jiemian.com/article/15377700.html" target="_blank" rel="noreferrer">中国国防部长访问意大利、英国深化战略互信</a><div class="m">界面新闻 · Tier-2 · 2026-11-26 15:43</div></li><li><a href="https://www.jiemian.com/article/15377530.html" target="_blank" rel="noreferrer">欧佩克秘书长指责欧盟阻碍气候谈判</a><div class="m">界面新闻 · Tier-2 · 2026-11-26 15:15</div></li><li><a href="https://tass.com/world/2225629" target="_blank" rel="noreferrer">Second day of EU summit cancelled after talks on budget, aid to Kiev fail — source</a><div class="m">TASS · English · Tier-1 · 2026-11-27 11:02</div></li><li><a href="https://tass.com/world/2224897" target="_blank" rel="noreferrer">EU sets energy truce, Black Sea deal as terms for Russia talks — EC</a><div class="m">TASS · English · Tier-1 · 2026-11-26 02:53</div></li><li><a href="https://www.straitstimes.com/world/europe/frances-macron-says-le-pen-should-be-less-arrogant-after-she-criticises-eu-budget-talks" target="_blank" rel="noreferrer">France&#x27;s Macron says Le Pen should be less arrogant after she criticises EU budget talks</a><div class="m">Straits Times · World · Tier-2 · 2026-11-27 07:41</div></li><li><a href="https://www.rappler.com/newsbreak/fact-check/dutch-ambassador-davao-visit-not-about-freeing-rodrigo-duterte-icc/" target="_blank" rel="noreferrer">FACT CHECK: Dutch ambassador’s Davao visit not about freeing Duterte from ICC</a><div class="m">Rappler · Philippines · Tier-2 · 2026-11-26 14:45</div></li></ul>
+  </details>
+</article><article class="card">
+  <div class="chips" style="margin:0 0 8px">
+    <span class="chip mid">中 · 69</span>
+    <span class="chip">全球</span>
+    <span class="chip">自然灾害</span>
+    <span class="chip acc">3 源 / 3 条</span>
+    <span class="chip lo">三源以上印证</span>
+  </div>
+  <h3>Colombian police storm supermarket to free 76 held hostage for 17 hours</h3>
+  <div class="quote">“One gunman was killed after what the country&#x27;s president described as a robbery of a cash-laden armoured car gone wrong.”<br><em>— BBC World 原文摘录（点击下方链接看全文）</em></div>
+  <details><summary>指标构成（规则计算，非结论）</summary><ul><li>独立媒体 3 家（覆盖度 30）</li><li>话题类型「自然灾害」（权重 25）</li><li>报道量 3 条（9）</li><li>权威源（Tier-1）1 家（+5）</li></ul></details>
+  <details><summary>全部报道（3 条，点开直达原文）</summary>
+    <ul class="src"><li><a href="https://www.bbc.co.uk/news/articles/ckp80mjr9emyo?at_medium=RSS&amp;at_campaign=rss" target="_blank" rel="noreferrer">Colombian police storm supermarket to free 76 held hostage for 17 hours</a><div class="m">BBC World · Tier-1 · 2026-11-26 02:41</div></li><li><a href="https://www.straitstimes.com/world/united-states/macys-thanksgiving-day-parade-postponed-due-to-storm-projections-us-media-reports" target="_blank" rel="noreferrer">Macy’s Thanksgiving Day Parade in New York City postponed due to storm projections</a><div class="m">Straits Times · World · Tier-2 · 2026-11-26 05:30</div></li><li><a href="https://www.thehindu.com/news/international/major-storm-batters-us-on-thanksgiving-holiday-400-flights-cancelled/article71749233.ece" target="_blank" rel="noreferrer">Major storm batters U.S. on Thanksgiving holiday; 400 flights cancelled</a><div class="m">The Hindu · Tier-2 · 2026-11-27 14:01</div></li></ul>
+  </details>
+</article><article class="card">
+  <div class="chips" style="margin:0 0 8px">
+    <span class="chip mid">中 · 69</span>
+    <span class="chip">北美</span>
+    <span class="chip">自然灾害</span>
+    <span class="chip acc">3 源 / 3 条</span>
+    <span class="chip lo">三源以上印证</span>
+  </div>
+  <h3>Storm hits US East Coast, causing flight delays, power outages</h3>
+  <div class="quote">“Storm hits US East Coast, causing flight delays, power outages”<br><em>— CGTN · World 原文摘录（点击下方链接看全文）</em></div>
+  <details><summary>指标构成（规则计算，非结论）</summary><ul><li>独立媒体 3 家（覆盖度 30）</li><li>话题类型「自然灾害」（权重 25）</li><li>报道量 3 条（9）</li><li>权威源（Tier-1）1 家（+5）</li></ul></details>
+  <details><summary>全部报道（3 条，点开直达原文）</summary>
+    <ul class="src"><li><a href="https://news.cgtn.com/news/2026-11-27/Storm-hits-US-East-Coast-causing-flight-delays-power-outages-1SpdUppphfO/p.html?UTM_Source=cgtn&amp;UTM_Medium=rss&amp;UTM_Campaign=World" target="_blank" rel="noreferrer">Storm hits US East Coast, causing flight delays, power outages</a><div class="m">CGTN · World · Tier-2 · 2026-11-27 10:04</div></li><li><a href="https://www.bbc.co.uk/news/articles/ckm2mz3prq77o?at_medium=RSS&amp;at_campaign=rss" target="_blank" rel="noreferrer">Major Thanksgiving storm brings flooding, flight delays across US</a><div class="m">BBC World · Tier-1 · 2026-11-27 13:15</div></li><li><a href="https://www.straitstimes.com/world/united-states/thanksgiving-storm-knocks-out-power-disrupts-flights-on-us-east-coast" target="_blank" rel="noreferrer">Thanksgiving storm knocks out power, disrupts flights on US East Coast</a><div class="m">Straits Times · World · Tier-2 · 2026-11-27 06:20</div></li></ul>
+  </details>
+</article><article class="card">
+  <div class="chips" style="margin:0 0 8px">
+    <span class="chip mid">中 · 68</span>
+    <span class="chip">北美</span>
+    <span class="chip">经济金融</span>
+    <span class="chip acc">6 源 / 8 条</span>
+    <span class="chip lo">三源以上印证</span>
+  </div>
+  <h3>巴西回应美国拟加征新关税：不可接受，不会屈服</h3>
+  <div class="quote">“中新社圣保罗11月25日电(记者 林春茵)巴西政府当地时间25日发表声明，对美国贸易代表办公室建议对巴西飞机和糖加征新一轮进口关税“表示愤慨”，强调巴西不会向此类威胁屈服，不排除采取对等措施。”<br><em>— 中新网·国际 原文摘录（点击下方链接看全文）</em></div>
+  <details><summary>指标构成（规则计算，非结论）</summary><ul><li>独立媒体 6 家（覆盖度 30）</li><li>话题类型「经济金融」（权重 8）</li><li>报道量 8 条（20）</li><li>权威源（Tier-1）2 家（+10）</li></ul></details>
+  <details><summary>全部报道（8 条，点开直达原文）</summary>
+    <ul class="src"><li><a href="https://www.chinanews.com.cn/gj/2026/11-26/10737961.shtml" target="_blank" rel="noreferrer">巴西回应美国拟加征新关税：不可接受，不会屈服</a><div class="m">中新网·国际 · Tier-1 · 2026-11-26 10:48</div></li><li><a href="https://www.chinanews.com.cn/gj/2026/11-27/10738476.shtml" target="_blank" rel="noreferrer">巴西副总统：美国对巴西加征新关税完全不合理</a><div class="m">中新网·国际 · Tier-1 · 2026-11-27 06:57</div></li><li><a href="https://www.jiemian.com/article/15377503.html" target="_blank" rel="noreferrer">商务部：坚决反对美对中国等经济体加征301关税</a><div class="m">界面新闻 · Tier-2 · 2026-11-26 15:10</div></li><li><a href="https://www.aa.com.tr/en/economy/gold-steadies-after-dipping-below-3-500-on-us-inflation-data/4138235" target="_blank" rel="noreferrer">Gold steadies after dipping below $3,500 on US inflation data</a><div class="m">Anadolu · English · Tier-1 · 2026-11-26 15:13</div></li><li><a href="https://www.aa.com.tr/en/americas/us-stocks-close-mixed-amid-sticky-inflation-tariff-proposals/4138127" target="_blank" rel="noreferrer">US stocks close mixed amid sticky inflation, tariff proposals</a><div class="m">Anadolu · English · Tier-1 · 2026-11-26 09:42</div></li><li><a href="https://www.straitstimes.com/world/united-states/cautious-us-consumers-gear-up-for-black-friday-as-inflation-woes-bite" target="_blank" rel="noreferrer">Cautious US consumers gear up for Black Friday as inflation woes bite</a><div class="m">Straits Times · World · Tier-2 · 2026-11-27 08:55</div></li><li><a href="https://www.koreaherald.com/article/10950619" target="_blank" rel="noreferrer">Korea stands by industrial policy after US tariff proposal</a><div class="m">Korea Herald · Tier-2 · 2026-11-26 16:00</div></li><li><a href="https://www.aljazeera.com/news/2026/11/26/brazil-blasts-unacceptable-new-us-tariff-proposals?traffic_source=rss" target="_blank" rel="noreferrer">Brazil blasts ‘unacceptable’ new US tariff proposals</a><div class="m">Al Jazeera · Tier-2 · 2026-11-26 12:47</div></li></ul>
+  </details>
+</article><article class="card">
+  <div class="chips" style="margin:0 0 8px">
+    <span class="chip mid">中 · 66</span>
+    <span class="chip">全球</span>
+    <span class="chip">科技产业</span>
+    <span class="chip acc">6 源 / 17 条</span>
+    <span class="chip lo">三源以上印证</span>
+  </div>
+  <h3>外媒聚焦神舟二十四号发射：见证中国航天历史性时刻，中巴携手逐梦太空</h3>
+  <div class="quote">“中新网11月26日电 11月25日8时18分，搭载神舟二十四号载人飞船的长征二号F遥二十四运载火箭在酒泉卫星发射中心点火发射，约10分钟后，飞船与火箭成功分离，进入预定轨道，航天员乘组状态良好，发射取得圆满成功。”<br><em>— 中新网·国际 原文摘录（点击下方链接看全文）</em></div>
+  <details><summary>指标构成（规则计算，非结论）</summary><ul><li>独立媒体 6 家（覆盖度 30）</li><li>话题类型「科技产业」（权重 6）</li><li>报道量 17 条（20）</li><li>权威源（Tier-1）2 家（+10）</li></ul></details>
+  <details><summary>全部报道（17 条，点开直达原文）</summary>
+    <ul class="src"><li><a href="https://www.chinanews.com.cn/gj/2026/11-26/10738054.shtml" target="_blank" rel="noreferrer">外媒聚焦神舟二十四号发射：见证中国航天历史性时刻，中巴携手逐梦太空</a><div class="m">中新网·国际 · Tier-1 · 2026-11-26 14:29</div></li><li><a href="https://www.chinanews.com.cn/gj/2026/11-26/10737869.shtml" target="_blank" rel="noreferrer">哈萨克斯坦首次利用人工智能起草法案</a><div class="m">中新网·国际 · Tier-1 · 2026-11-26 08:18</div></li><li><a href="https://www.jiemian.com/article/15382358.html" target="_blank" rel="noreferrer">科创芯片ETF鹏华(588920)标的指数涨超13%，科创芯片设计ETF鹏华(589170)标的指数涨超10%，AI提振芯片需求，芯片产业链暴力拉升</a><div class="m">界面新闻 · Tier-2 · 2026-11-27 13:44</div></li><li><a href="https://www.jiemian.com/article/15382452.html" target="_blank" rel="noreferrer">高层会议力挺资本市场A股午后狂飙！国产芯片链午后大爆发, 长川科技20CM涨停，芯片ETF汇添富(516920)指数涨近12%！</a><div class="m">界面新闻 · Tier-2 · 2026-11-27 13:44</div></li><li><a href="https://www.jiemian.com/article/15382478.html" target="_blank" rel="noreferrer">创业板人工智能ETF富国(159246)跟踪指数创业板人工智能指数上涨12.44%，跟踪指数已处近1年估值低位</a><div class="m">界面新闻 · Tier-2 · 2026-11-27 13:44</div></li><li><a href="https://www.jiemian.com/article/15382205.html" target="_blank" rel="noreferrer">科创芯片ETF富国(588810)跟踪指数上证科创板芯片指数上涨11.83%，跟踪指数已处近1年估值低位</a><div class="m">界面新闻 · Tier-2 · 2026-11-27 13:45</div></li><li><a href="https://www.jiemian.com/article/15382309.html" target="_blank" rel="noreferrer">科创半导体设备ETF鹏华(589020)标的指数涨超15.6%，国产化替代加速，半导体产业链多股涨停</a><div class="m">界面新闻 · Tier-2 · 2026-11-27 13:44</div></li><li><a href="https://www.jiemian.com/article/15382361.html" target="_blank" rel="noreferrer">【热点】大反攻！涨停再现！半导体设备ETF招商(561980)成分中科飞测、长川科技20CM封板</a><div class="m">界面新闻 · Tier-2 · 2026-11-27 13:44</div></li></ul>
+  </details>
+</article><article class="card">
+  <div class="chips" style="margin:0 0 8px">
+    <span class="chip mid">中 · 63</span>
+    <span class="chip">全球</span>
+    <span class="chip">气候能源</span>
+    <span class="chip acc">5 源 / 5 条</span>
+    <span class="chip lo">三源以上印证</span>
+  </div>
+  <h3>Brent oil prices hit $96 per barrel on London’s ICE</h3>
+  <div class="quote">“Brent prices gained 1.5% to $96.03 a barrel”<br><em>— TASS · English 原文摘录（点击下方链接看全文）</em></div>
+  <details><summary>指标构成（规则计算，非结论）</summary><ul><li>独立媒体 5 家（覆盖度 30）</li><li>话题类型「气候能源」（权重 10）</li><li>标题含伤亡/规模类表述（3）</li><li>报道量 5 条（15）</li><li>权威源（Tier-1）1 家（+5）</li></ul></details>
+  <details><summary>全部报道（5 条，点开直达原文）</summary>
+    <ul class="src"><li><a href="https://tass.com/economy/2225021" target="_blank" rel="noreferrer">Brent oil prices hit $96 per barrel on London’s ICE</a><div class="m">TASS · English · Tier-1 · 2026-11-26 14:07</div></li><li><a href="https://www.thehindu.com/news/international/bangkok-oil-refinery-fire-blast-bangchak-injured-casualties-nov-26-2026/article71745999.ece" target="_blank" rel="noreferrer">Massive fire at Bangkok oil refinery leaves several injured, Bangchak Corp shuts all units</a><div class="m">The Hindu · Tier-2 · 2026-11-26 18:19</div></li><li><a href="https://www.premiumtimesng.com/news/headlines/928104-court-of-appeal-overturns-omokores-acquittal-convicts-him-in-823m-oil-fraud-case.html" target="_blank" rel="noreferrer">Court of Appeal overturns Omokore’s acquittal, convicts him in $823m oil fraud case</a><div class="m">Premium Times · Nigeria · Tier-2 · 2026-11-26 12:51</div></li><li><a href="https://www.japantimes.co.jp/business/2026/11/27/companies/tepco-kashiwazaki-kariwa-delay-antiterrorism/" target="_blank" rel="noreferrer">Tepco delays completion date of Niigata nuclear plant’s anti-terrorism facility</a><div class="m">Japan Times · Tier-2 · 2026-11-27 11:34</div></li><li><a href="https://english.elpais.com/climate/2026-11-26/the-climate-crisis-is-forcing-thousands-of-europeans-from-their-homes.html" target="_blank" rel="noreferrer">The climate crisis is forcing thousands of Europeans from their homes</a><div class="m">El País · English · Tier-2 · 2026-11-27 04:00</div></li></ul>
+  </details>
+</article><article class="card">
+  <div class="chips" style="margin:0 0 8px">
+    <span class="chip mid">中 · 60</span>
+    <span class="chip">北美</span>
+    <span class="chip">外交关系</span>
+    <span class="chip acc">4 源 / 5 条</span>
+    <span class="chip lo">三源以上印证</span>
+  </div>
+  <h3>Europe should choose single representative for Ukraine talks — US envoy</h3>
+  <div class="quote">“Jared Kushner emphasized that one representative would be ideal”<br><em>— TASS · English 原文摘录（点击下方链接看全文）</em></div>
+  <details><summary>指标构成（规则计算，非结论）</summary><ul><li>独立媒体 4 家（覆盖度 30）</li><li>话题类型「外交关系」（权重 10）</li><li>报道量 5 条（15）</li><li>权威源（Tier-1）1 家（+5）</li></ul></details>
+  <details><summary>全部报道（5 条，点开直达原文）</summary>
+    <ul class="src"><li><a href="https://tass.com/world/2224977" target="_blank" rel="noreferrer">Europe should choose single representative for Ukraine talks — US envoy</a><div class="m">TASS · English · Tier-1 · 2026-11-26 08:12</div></li><li><a href="https://tass.com/world/2224935" target="_blank" rel="noreferrer">Declaration of summit of Russia, China and US optimal — Tokayev</a><div class="m">TASS · English · Tier-1 · 2026-11-26 04:00</div></li><li><a href="https://www.koreaherald.com/article/10950465" target="_blank" rel="noreferrer">Kim Jong-un seeks arms control talks with US, not denuclearization: experts</a><div class="m">Korea Herald · Tier-2 · 2026-11-26 14:29</div></li><li><a href="https://www.aljazeera.com/news/2026/11/26/mexico-seeks-us-talks-about-suspected-spacex-debris?traffic_source=rss" target="_blank" rel="noreferrer">Mexico seeks US talks about suspected SpaceX debris</a><div class="m">Al Jazeera · Tier-2 · 2026-11-27 04:31</div></li><li><a href="https://www.straitstimes.com/world/mexico-seeking-talks-with-us-on-spacex-airspace-use" target="_blank" rel="noreferrer">Mexico seeking talks with US on SpaceX airspace use</a><div class="m">Straits Times · World · Tier-2 · 2026-11-27 00:16</div></li></ul>
+  </details>
+</article><article class="card">
+  <div class="chips" style="margin:0 0 8px">
+    <span class="chip mid">中 · 55</span>
+    <span class="chip">欧洲</span>
+    <span class="chip">气候能源</span>
+    <span class="chip acc">3 源 / 5 条</span>
+    <span class="chip lo">三源以上印证</span>
+  </div>
+  <h3>India, Netherlands upgrade ties; sign 17 MoUs on water, renewable energy, and semiconductors</h3>
+  <div class="quote">“MEA pushes back on Dutch concerns over press freedom and minority rights in India. Agreements signed include a semiconductor fabrication project between TATA Electronics and Dutch company ASML”<br><em>— The Hindu 原文摘录（点击下方链接看全文）</em></div>
+  <details><summary>指标构成（规则计算，非结论）</summary><ul><li>独立媒体 3 家（覆盖度 30）</li><li>话题类型「气候能源」（权重 10）</li><li>报道量 5 条（15）</li></ul></details>
+  <details><summary>全部报道（5 条，点开直达原文）</summary>
+    <ul class="src"><li><a href="https://www.thehindu.com/news/national/india-netherlands-elevating-ties-to-strategic-partnership-says-pm-modi/article70988590.ece" target="_blank" rel="noreferrer">India, Netherlands upgrade ties; sign 17 MoUs on water, renewable energy, and semiconductors</a><div class="m">The Hindu · Tier-2 · 2026-11-26 14:20</div></li><li><a href="https://www.politico.eu/article/spain-looming-right-wing-pivot-on-climate-is-already-playing-out-in-valencia/?utm_source=RSS_Feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication" target="_blank" rel="noreferrer">Spain’s looming right-wing pivot on climate is already playing out in Valencia</a><div class="m">Politico EU · Tier-2 · 2026-11-27 11:00</div></li><li><a href="https://www.thehindu.com/news/international/ukraine-says-it-struck-two-oil-refineries-in-russias-samara-region/article71743934.ece" target="_blank" rel="noreferrer">Ukraine says it struck two oil refineries in Russia&#x27;s Samara region</a><div class="m">The Hindu · Tier-2 · 2026-11-26 02:09</div></li><li><a href="https://www.straitstimes.com/world/europe/spain-races-to-stop-oil-spill-after-ship-capsizes-off-ibiza" target="_blank" rel="noreferrer">Spain races to stop oil spill after ship capsizes off Ibiza</a><div class="m">Straits Times · World · Tier-2 · 2026-11-27 07:35</div></li><li><a href="https://www.straitstimes.com/world/europe/ukraine-claims-strike-that-damaged-russian-oil-refinery" target="_blank" rel="noreferrer">Ukraine claims strike that damaged Russian oil refinery</a><div class="m">Straits Times · World · Tier-2 · 2026-11-27 02:16</div></li></ul>
+  </details>
+</article><article class="card">
+  <div class="chips" style="margin:0 0 8px">
+    <span class="chip mid">中 · 55</span>
+    <span class="chip">亚太</span>
+    <span class="chip">经济金融</span>
+    <span class="chip acc">3 源 / 4 条</span>
+    <span class="chip lo">三源以上印证</span>
+  </div>
+  <h3>韩国央行将基准利率上调至3.25%</h3>
+  <div class="quote">“中新网首尔11月26日电 (金旭 林珺)韩国银行(央行)当地时间26日决定，将基准利率从3.00%上调至3.25%。”<br><em>— 中新网·国际 原文摘录（点击下方链接看全文）</em></div>
+  <details><summary>指标构成（规则计算，非结论）</summary><ul><li>独立媒体 3 家（覆盖度 30）</li><li>话题类型「经济金融」（权重 8）</li><li>报道量 4 条（12）</li><li>权威源（Tier-1）1 家（+5）</li></ul></details>
+  <details><summary>全部报道（4 条，点开直达原文）</summary>
+    <ul class="src"><li><a href="https://www.chinanews.com.cn/gj/2026/11-26/10738071.shtml" target="_blank" rel="noreferrer">韩国央行将基准利率上调至3.25%</a><div class="m">中新网·国际 · Tier-1 · 2026-11-26 15:02</div></li><li><a href="https://www.japantimes.co.jp/business/2026/11/26/markets/volatility-investors-tariff-tech-pain/" target="_blank" rel="noreferrer">Volatility-weary investors sideswiped as tariff mayhem adds to tech pain</a><div class="m">Japan Times · Tier-2 · 2026-11-26 09:03</div></li><li><a href="https://www.japantimes.co.jp/business/2026/11/26/economy/japan-protests-trump-new-tariff/" target="_blank" rel="noreferrer">Japan protests new U.S. tariff rate, allegation of excess capacity</a><div class="m">Japan Times · Tier-2 · 2026-11-26 13:28</div></li><li><a href="https://www.koreaherald.com/article/10950549" target="_blank" rel="noreferrer">BOK raises rate to 3.25% as chip boom fuels inflation concerns</a><div class="m">Korea Herald · Tier-2 · 2026-11-26 15:05</div></li></ul>
+  </details>
+</article><article class="card">
+  <div class="chips" style="margin:0 0 8px">
+    <span class="chip mid">中 · 54</span>
+    <span class="chip">非洲</span>
+    <span class="chip">公共卫生</span>
+    <span class="chip acc">3 源 / 3 条</span>
+    <span class="chip lo">三源以上印证</span>
+  </div>
+  <h3>Ebola cases reach 12,000 in Congo as second-largest outbreak on record grows</h3>
+  <div class="quote">“The number of confirmed Ebola cases in Democratic Republic of Congo now exceeds 12,000, government data showed on Thursday, as responders continue to struggle to bring the second-largest outbreak on record under control.”<br><em>— CBC · World 原文摘录（点击下方链接看全文）</em></div>
+  <details><summary>指标构成（规则计算，非结论）</summary><ul><li>独立媒体 3 家（覆盖度 30）</li><li>话题类型「公共卫生」（权重 10）</li><li>报道量 3 条（9）</li><li>权威源（Tier-1）1 家（+5）</li></ul></details>
+  <details><summary>全部报道（3 条，点开直达原文）</summary>
+    <ul class="src"><li><a href="https://www.cbc.ca/news/health/ebola-tops-12000-cases-outbreak-9.7436970?cmp=rss" target="_blank" rel="noreferrer">Ebola cases reach 12,000 in Congo as second-largest outbreak on record grows</a><div class="m">CBC · World · Tier-1 · 2026-11-26 23:22</div></li><li><a href="https://www.straitstimes.com/world/congos-ebola-cases-exceed-12000-as-responders-struggle-to-contain-outbreak" target="_blank" rel="noreferrer">Congo’s Ebola cases exceed 12,000 as responders struggle to contain outbreak</a><div class="m">Straits Times · World · Tier-2 · 2026-11-26 15:46</div></li><li><a href="https://www.npr.org/2026/11/26/g-s1-155957/congo-ebola-responders" target="_blank" rel="noreferrer">Congo Ebola outbreak reaches 12,000 cases as some responders evacuate</a><div class="m">NPR World · Tier-2 · 2026-11-26 21:47</div></li></ul>
+  </details>
+</article><article class="card">
+  <div class="chips" style="margin:0 0 8px">
+    <span class="chip lo">低 · 43</span>
+    <span class="chip">亚太</span>
+    <span class="chip">武装冲突</span>
+    <span class="chip acc">1 源 / 1 条</span>
+    <span class="chip hi">单源待核实</span>
+  </div>
+  <h3>日本拟引进新型反舰导弹恶化地区安全环境 终将反噬自身</h3>
+  <div class="quote">“据日本方面25日消息，日本政府计划于年内修订的“安保三文件”之一 《防卫力整备计划》的指导方针已初步明确，其中提出引进可搭载在舰艇上的新型反舰导弹，以强化所谓“反击能力”。”<br><em>— 中新网·国际 原文摘录（点击下方链接看全文）</em></div><div class="meta" style="color:#ffa93c;margin-top:8px">⚠ 仅单一信源，未获多源印证，请点原文核实</div>
+  <details><summary>指标构成（规则计算，非结论）</summary><ul><li>独立媒体 1 家（覆盖度 10）</li><li>话题类型「武装冲突」（权重 25）</li><li>报道量 1 条（3）</li><li>权威源（Tier-1）1 家（+5）</li></ul></details>
+  <details><summary>全部报道（1 条，点开直达原文）</summary>
+    <ul class="src"><li><a href="https://www.chinanews.com.cn/gj/2026/11-27/10738592.shtml" target="_blank" rel="noreferrer">日本拟引进新型反舰导弹恶化地区安全环境 终将反噬自身</a><div class="m">中新网·国际 · Tier-1 · 2026-11-27 10:32</div></li></ul>
+  </details>
+</article><article class="card">
+  <div class="chips" style="margin:0 0 8px">
+    <span class="chip lo">低 · 41</span>
+    <span class="chip">中东</span>
+    <span class="chip">气候能源</span>
+    <span class="chip acc">2 源 / 2 条</span>
+    <span class="chip lo">三源以上印证</span>
+  </div>
+  <h3>失去伊朗石油供應，中國小型煉油廠如何應對？</h3>
+  <div class="quote">“美國對伊朗實施海上封鎖，迫使長期依賴廉價伊朗石油的中國獨立煉油廠轉向伊拉克等產油國，面臨成本上升和經營虧損的壓力。即使封鎖解除，伊朗能否重新贏得這些中國買家，仍取決於油價及美國的制裁政策。”<br><em>— BBC 中文 原文摘录（点击下方链接看全文）</em></div>
+  <details><summary>指标构成（规则计算，非结论）</summary><ul><li>独立媒体 2 家（覆盖度 20）</li><li>话题类型「气候能源」（权重 10）</li><li>报道量 2 条（6）</li><li>权威源（Tier-1）1 家（+5）</li></ul></details>
+  <details><summary>全部报道（2 条，点开直达原文）</summary>
+    <ul class="src"><li><a href="https://www.bbc.com/zhongwen/articles/c3qj5y7lwrn9o/trad?at_medium=RSS&amp;at_campaign=rss" target="_blank" rel="noreferrer">失去伊朗石油供應，中國小型煉油廠如何應對？</a><div class="m">BBC 中文 · Tier-1 · 2026-11-27 11:35</div></li><li><a href="https://www.dw.com/en/protests-in-iraqi-kurdistan-at-plans-for-government-in-baghdad-to-take-over-oil-border-crossings/a-80065994?maca=en-rss-en-world-4025-xml-mrss" target="_blank" rel="noreferrer">Protests in Iraqi Kurdistan at plans for government in Baghdad to take over oil, border crossings</a><div class="m">DW · English · Tier-2 · 2026-11-27 00:13</div></li></ul>
+  </details>
+</article><article class="card">
+  <div class="chips" style="margin:0 0 8px">
+    <span class="chip lo">低 · 41</span>
+    <span class="chip">亚太</span>
+    <span class="chip">自然灾害</span>
+    <span class="chip acc">1 源 / 1 条</span>
+    <span class="chip hi">单源待核实</span>
+  </div>
+  <h3>At least 13 dead in Indonesia gold mine flood as rescue efforts intensify</h3>
+  <div class="quote">“Rescue workers facing tough conditions, with narrow, deep and slippery excavation pits and minimal lighting.”<br><em>— Al Jazeera 原文摘录（点击下方链接看全文）</em></div><div class="meta" style="color:#ffa93c;margin-top:8px">⚠ 仅单一信源，未获多源印证，请点原文核实</div>
+  <details><summary>指标构成（规则计算，非结论）</summary><ul><li>独立媒体 1 家（覆盖度 10）</li><li>话题类型「自然灾害」（权重 25）</li><li>标题含伤亡/规模类表述（3）</li><li>报道量 1 条（3）</li></ul></details>
+  <details><summary>全部报道（1 条，点开直达原文）</summary>
+    <ul class="src"><li><a href="https://www.aljazeera.com/news/2026/11/26/at-least-13-dead-in-indonesia-gold-mine-flood-as-rescue-efforts-intensify?traffic_source=rss" target="_blank" rel="noreferrer">At least 13 dead in Indonesia gold mine flood as rescue efforts intensify</a><div class="m">Al Jazeera · Tier-2 · 2026-11-26 15:38</div></li></ul>
+  </details>
+</article><article class="card">
+  <div class="chips" style="margin:0 0 8px">
+    <span class="chip lo">低 · 38</span>
+    <span class="chip">南亚</span>
+    <span class="chip">自然灾害</span>
+    <span class="chip acc">1 源 / 1 条</span>
+    <span class="chip hi">单源待核实</span>
+  </div>
+  <h3>Nepal and UN roll out $49.94m flood defense for Himalayan communities</h3>
+  <div class="quote">“Nepal and UN roll out $49.94m flood defense for Himalayan communities”<br><em>— CGTN · World 原文摘录（点击下方链接看全文）</em></div><div class="meta" style="color:#ffa93c;margin-top:8px">⚠ 仅单一信源，未获多源印证，请点原文核实</div>
+  <details><summary>指标构成（规则计算，非结论）</summary><ul><li>独立媒体 1 家（覆盖度 10）</li><li>话题类型「自然灾害」（权重 25）</li><li>报道量 1 条（3）</li></ul></details>
+  <details><summary>全部报道（1 条，点开直达原文）</summary>
+    <ul class="src"><li><a href="https://news.cgtn.com/news/2026-11-26/Nepal-and-UN-roll-out-49-94m-flood-defense-for-Himalayan-communities-1SnKwEsyMY8/p.html?UTM_Source=cgtn&amp;UTM_Medium=rss&amp;UTM_Campaign=World" target="_blank" rel="noreferrer">Nepal and UN roll out $49.94m flood defense for Himalayan communities</a><div class="m">CGTN · World · Tier-2 · 2026-11-26 13:59</div></li></ul>
+  </details>
+</article><article class="card">
+  <div class="chips" style="margin:0 0 8px">
+    <span class="chip lo">低 · 38</span>
+    <span class="chip">拉美</span>
+    <span class="chip">武装冲突</span>
+    <span class="chip acc">1 源 / 1 条</span>
+    <span class="chip hi">单源待核实</span>
+  </div>
+  <h3>‘Terrorist attack’ caused major blackout in Colombia, president says</h3>
+  <div class="quote">“The power outages came amid a series of attacks by armed groups this week as the country marked 10 years of faltering peace.”<br><em>— Washington Post · World 原文摘录（点击下方链接看全文）</em></div><div class="meta" style="color:#ffa93c;margin-top:8px">⚠ 仅单一信源，未获多源印证，请点原文核实</div>
+  <details><summary>指标构成（规则计算，非结论）</summary><ul><li>独立媒体 1 家（覆盖度 10）</li><li>话题类型「武装冲突」（权重 25）</li><li>报道量 1 条（3）</li></ul></details>
+  <details><summary>全部报道（1 条，点开直达原文）</summary>
+    <ul class="src"><li><a href="https://www.washingtonpost.com/business/2026/11/25/terrorist-attack-caused-major-blackout-colombia-president-says/" target="_blank" rel="noreferrer">‘Terrorist attack’ caused major blackout in Colombia, president says</a><div class="m">Washington Post · World · Tier-2 · 2026-11-26 04:40</div></li></ul>
+  </details>
+</article><article class="card">
+  <div class="chips" style="margin:0 0 8px">
+    <span class="chip lo">低 · 36</span>
+    <span class="chip">全球</span>
+    <span class="chip">人道状况</span>
+    <span class="chip acc">2 源 / 2 条</span>
+    <span class="chip mid">双源报道</span>
+  </div>
+  <h3>中国海军将举办2026年西太海军论坛人道主义救援减灾研讨与桌面推演</h3>
+  <div class="quote">“More than half the field workers at the Famine Early Warning Systems Network will lose their jobs by the end of the year.”<br><em>— Japan Times 原文摘录（点击下方链接看全文）</em></div>
+  <details><summary>指标构成（规则计算，非结论）</summary><ul><li>独立媒体 2 家（覆盖度 20）</li><li>话题类型「人道状况」（权重 10）</li><li>报道量 2 条（6）</li></ul></details>
+  <details><summary>全部报道（2 条，点开直达原文）</summary>
+    <ul class="src"><li><a href="https://www.jiemian.com/article/15377671.html" target="_blank" rel="noreferrer">中国海军将举办2026年西太海军论坛人道主义救援减灾研讨与桌面推演</a><div class="m">界面新闻 · Tier-2 · 2026-11-26 15:36</div></li><li><a href="https://www.japantimes.co.jp/news/2026/11/26/world/politics/us-famine-monitor-funding-staff/" target="_blank" rel="noreferrer">U.S. famine monitor to halt reporting as funding shortfall hits staff, sources say</a><div class="m">Japan Times · Tier-2 · 2026-11-26 10:33</div></li></ul>
+  </details>
+</article><article class="card">
+  <div class="chips" style="margin:0 0 8px">
+    <span class="chip lo">低 · 36</span>
+    <span class="chip">亚太</span>
+    <span class="chip">外交关系</span>
+    <span class="chip acc">2 源 / 2 条</span>
+    <span class="chip mid">双源报道</span>
+  </div>
+  <h3>Was Japan Prime Minister Takaichi Snubbed at China’s Big Summit?</h3>
+  <div class="quote">“Images show the differences between the welcomes afforded to Sanae Takaichi and other world leaders in Shenzhen, as some officials in Japan cry foul.”<br><em>— NYT · World 原文摘录（点击下方链接看全文）</em></div>
+  <details><summary>指标构成（规则计算，非结论）</summary><ul><li>独立媒体 2 家（覆盖度 20）</li><li>话题类型「外交关系」（权重 10）</li><li>报道量 2 条（6）</li></ul></details>
+  <details><summary>全部报道（2 条，点开直达原文）</summary>
+    <ul class="src"><li><a href="https://www.nytimes.com/2026/11/26/world/asia/japan-china-takaichi-snubbed.html" target="_blank" rel="noreferrer">Was Japan Prime Minister Takaichi Snubbed at China’s Big Summit?</a><div class="m">NYT · World · Tier-2 · 2026-11-26 15:14</div></li><li><a href="https://www.japantimes.co.jp/news/2026/11/26/japan/hegseth-possible-japan-visit/" target="_blank" rel="noreferrer">Hegseth may visit Japan on Dec. 8 for defense minister meeting</a><div class="m">Japan Times · Tier-2 · 2026-11-26 09:39</div></li></ul>
+  </details>
+</article><article class="card">
+  <div class="chips" style="margin:0 0 8px">
+    <span class="chip lo">低 · 36</span>
+    <span class="chip">亚太</span>
+    <span class="chip">事故灾难</span>
+    <span class="chip acc">1 源 / 1 条</span>
+    <span class="chip hi">单源待核实</span>
+  </div>
+  <h3>Death toll from Indonesia gold mine collapse rises to 13</h3>
+  <div class="quote">“More than 300 rescuers continue search operations in West Java province amid difficult weather and challenging underground conditions”<br><em>— Anadolu · English 原文摘录（点击下方链接看全文）</em></div><div class="meta" style="color:#ffa93c;margin-top:8px">⚠ 仅单一信源，未获多源印证，请点原文核实</div>
+  <details><summary>指标构成（规则计算，非结论）</summary><ul><li>独立媒体 1 家（覆盖度 10）</li><li>话题类型「事故灾难」（权重 15）</li><li>标题含伤亡/规模类表述（3）</li><li>报道量 1 条（3）</li><li>权威源（Tier-1）1 家（+5）</li></ul></details>
+  <details><summary>全部报道（1 条，点开直达原文）</summary>
+    <ul class="src"><li><a href="https://www.aa.com.tr/en/asia-pacific/death-toll-from-indonesia-gold-mine-collapse-rises-to-13/4138168" target="_blank" rel="noreferrer">Death toll from Indonesia gold mine collapse rises to 13</a><div class="m">Anadolu · English · Tier-1 · 2026-11-26 13:56</div></li></ul>
+  </details>
+</article><article class="card">
+  <div class="chips" style="margin:0 0 8px">
+    <span class="chip lo">低 · 31</span>
+    <span class="chip">北美</span>
+    <span class="chip">事故灾难</span>
+    <span class="chip acc">1 源 / 1 条</span>
+    <span class="chip hi">单源待核实</span>
+  </div>
+  <h3>Six killed, including children, in plane crash off Mississippi coast</h3>
+  <div class="quote">“US authorities are investigating the reason behind the crash that killed members of the Stokes and Knox families.”<br><em>— Al Jazeera 原文摘录（点击下方链接看全文）</em></div><div class="meta" style="color:#ffa93c;margin-top:8px">⚠ 仅单一信源，未获多源印证，请点原文核实</div>
+  <details><summary>指标构成（规则计算，非结论）</summary><ul><li>独立媒体 1 家（覆盖度 10）</li><li>话题类型「事故灾难」（权重 15）</li><li>标题含伤亡/规模类表述（3）</li><li>报道量 1 条（3）</li></ul></details>
+  <details><summary>全部报道（1 条，点开直达原文）</summary>
+    <ul class="src"><li><a href="https://www.aljazeera.com/news/2026/11/26/six-killed-including-children-in-plane-crash-off-mississippi-coast?traffic_source=rss" target="_blank" rel="noreferrer">Six killed, including children, in plane crash off Mississippi coast</a><div class="m">Al Jazeera · Tier-2 · 2026-11-26 12:48</div></li></ul>
+  </details>
+</article><article class="card">
+  <div class="chips" style="margin:0 0 8px">
+    <span class="chip lo">低 · 28</span>
+    <span class="chip">非洲</span>
+    <span class="chip">外交关系</span>
+    <span class="chip acc">1 源 / 1 条</span>
+    <span class="chip hi">单源待核实</span>
+  </div>
+  <h3>African Union Commission, China sign agreement to deepen development cooperation</h3>
+  <div class="quote">“Agreement seeks to strengthen strategic partnership, advance Africa&#x27;s economic development and continental integration”<br><em>— Anadolu · English 原文摘录（点击下方链接看全文）</em></div><div class="meta" style="color:#ffa93c;margin-top:8px">⚠ 仅单一信源，未获多源印证，请点原文核实</div>
+  <details><summary>指标构成（规则计算，非结论）</summary><ul><li>独立媒体 1 家（覆盖度 10）</li><li>话题类型「外交关系」（权重 10）</li><li>报道量 1 条（3）</li><li>权威源（Tier-1）1 家（+5）</li></ul></details>
+  <details><summary>全部报道（1 条，点开直达原文）</summary>
+    <ul class="src"><li><a href="https://www.aa.com.tr/en/asia-pacific/african-union-commission-china-sign-agreement-to-deepen-development-cooperation/4139872" target="_blank" rel="noreferrer">African Union Commission, China sign agreement to deepen development cooperation</a><div class="m">Anadolu · English · Tier-1 · 2026-11-27 09:27</div></li></ul>
+  </details>
+</article><article class="card">
+  <div class="chips" style="margin:0 0 8px">
+    <span class="chip lo">低 · 28</span>
+    <span class="chip">中东</span>
+    <span class="chip">外交关系</span>
+    <span class="chip acc">1 源 / 1 条</span>
+    <span class="chip hi">单源待核实</span>
+  </div>
+  <h3>Proving futility of sanctions against Iran is more important than talks — foreign minister</h3>
+  <div class="quote">“According to Abbas Araghchi, Iranian diplomats are working around the clock to meet the nation&#x27;s needs and keep trade routes open”<br><em>— TASS · English 原文摘录（点击下方链接看全文）</em></div><div class="meta" style="color:#ffa93c;margin-top:8px">⚠ 仅单一信源，未获多源印证，请点原文核实</div>
+  <details><summary>指标构成（规则计算，非结论）</summary><ul><li>独立媒体 1 家（覆盖度 10）</li><li>话题类型「外交关系」（权重 10）</li><li>报道量 1 条（3）</li><li>权威源（Tier-1）1 家（+5）</li></ul></details>
+  <details><summary>全部报道（1 条，点开直达原文）</summary>
+    <ul class="src"><li><a href="https://tass.com/world/2225507" target="_blank" rel="noreferrer">Proving futility of sanctions against Iran is more important than talks — foreign minister</a><div class="m">TASS · English · Tier-1 · 2026-11-27 01:11</div></li></ul>
+  </details>
+</article><article class="card">
+  <div class="chips" style="margin:0 0 8px">
+    <span class="chip lo">低 · 28</span>
+    <span class="chip">欧洲</span>
+    <span class="chip">事故灾难</span>
+    <span class="chip acc">1 源 / 1 条</span>
+    <span class="chip hi">单源待核实</span>
+  </div>
+  <h3>OPEC blames EU for COP31 collapse</h3>
+  <div class="quote">“In a blog post, OPEC&#x27;s secretary-general rejected claims that Saudi Arabia, Russia and other oil producers were responsible for the failure of talks.”<br><em>— Japan Times 原文摘录（点击下方链接看全文）</em></div><div class="meta" style="color:#ffa93c;margin-top:8px">⚠ 仅单一信源，未获多源印证，请点原文核实</div>
+  <details><summary>指标构成（规则计算，非结论）</summary><ul><li>独立媒体 1 家（覆盖度 10）</li><li>话题类型「事故灾难」（权重 15）</li><li>报道量 1 条（3）</li></ul></details>
+  <details><summary>全部报道（1 条，点开直达原文）</summary>
+    <ul class="src"><li><a href="https://www.japantimes.co.jp/environment/2026/11/26/climate-change/opec-eu-cop31-collapse/" target="_blank" rel="noreferrer">OPEC blames EU for COP31 collapse</a><div class="m">Japan Times · Tier-2 · 2026-11-26 09:18</div></li></ul>
+  </details>
+</article><article class="card">
+  <div class="chips" style="margin:0 0 8px">
+    <span class="chip lo">低 · 28</span>
+    <span class="chip">中东</span>
+    <span class="chip">事故灾难</span>
+    <span class="chip acc">1 源 / 1 条</span>
+    <span class="chip hi">单源待核实</span>
+  </div>
+  <h3>Explosion heard in Riyadh after &#x27;hostile aerial threat&#x27; warning, report says</h3>
+  <div class="quote">“Explosion heard in Riyadh after &#x27;hostile aerial threat&#x27; warning, report says An explosion was heard in Saudi capital Riyadh on Wednesday, according to an AFP journalist and residents, a day after 11 people were wounded in a Houthi-claimed attack on the city&#x27;s financial district. The explosion occurred around midnight local time after authorities issued an alert warning of a &quot;hostile aerial threat&quot;”<br><em>— Middle East Eye 原文摘录（点击下方链接看全文）</em></div><div class="meta" style="color:#ffa93c;margin-top:8px">⚠ 仅单一信源，未获多源印证，请点原文核实</div>
+  <details><summary>指标构成（规则计算，非结论）</summary><ul><li>独立媒体 1 家（覆盖度 10）</li><li>话题类型「事故灾难」（权重 15）</li><li>报道量 1 条（3）</li></ul></details>
+  <details><summary>全部报道（1 条，点开直达原文）</summary>
+    <ul class="src"><li><a href="https://www.middleeasteye.net/live-blog/live-blog-update/explosion-heard-riyadh-after-hostile-aerial-threat-warning-report-says" target="_blank" rel="noreferrer">Explosion heard in Riyadh after &#x27;hostile aerial threat&#x27; warning, report says</a><div class="m">Middle East Eye · Tier-2 · 2026-11-26 06:20</div></li></ul>
+  </details>
+</article><article class="card">
+  <div class="chips" style="margin:0 0 8px">
+    <span class="chip lo">低 · 26</span>
+    <span class="chip">亚太</span>
+    <span class="chip">气候能源</span>
+    <span class="chip acc">1 源 / 2 条</span>
+    <span class="chip hi">单源待核实</span>
+  </div>
+  <h3>[Contribution] K-REDD+: A climate solution built together by government and private sector</h3>
+  <div class="quote">“By Park Eun-sik, Minister of the Korea Forest Service One of the oldest and most reliable ways to slow the pace of the climate crisis is to protect our forests. Forests absorb carbon dioxide from the atmosphere, but when they are degraded or destroyed, the carbon they have stored is released back into the air. This is why protecting the world’s forests is protecting the Earth’s climate. To address”<br><em>— Korea Herald 原文摘录（点击下方链接看全文）</em></div><div class="meta" style="color:#ffa93c;margin-top:8px">⚠ 仅单一信源，未获多源印证，请点原文核实</div>
+  <details><summary>指标构成（规则计算，非结论）</summary><ul><li>独立媒体 1 家（覆盖度 10）</li><li>话题类型「气候能源」（权重 10）</li><li>报道量 2 条（6）</li></ul></details>
+  <details><summary>全部报道（2 条，点开直达原文）</summary>
+    <ul class="src"><li><a href="https://www.koreaherald.com/article/10951790" target="_blank" rel="noreferrer">[Contribution] K-REDD+: A climate solution built together by government and private sector</a><div class="m">Korea Herald · Tier-2 · 2026-11-27 13:23</div></li><li><a href="https://www.koreaherald.com/article/10950846" target="_blank" rel="noreferrer">Global Innovation Center seeks to turn carbon cuts into farm income</a><div class="m">Korea Herald · Tier-2 · 2026-11-26 16:59</div></li></ul>
+  </details>
+</article><article class="card">
+  <div class="chips" style="margin:0 0 8px">
+    <span class="chip lo">低 · 26</span>
+    <span class="chip">欧洲</span>
+    <span class="chip">经济金融</span>
+    <span class="chip acc">1 源 / 1 条</span>
+    <span class="chip hi">单源待核实</span>
+  </div>
+  <h3>欧盟对15家俄罗斯实体实施贸易制裁</h3>
+  <div class="quote">“中新网布鲁塞尔11月26日电(记者 德永健)欧盟25日对俄罗斯发起贸易制裁，将俄罗斯15家实体列为制裁对象。”<br><em>— 中新网·国际 原文摘录（点击下方链接看全文）</em></div><div class="meta" style="color:#ffa93c;margin-top:8px">⚠ 仅单一信源，未获多源印证，请点原文核实</div>
+  <details><summary>指标构成（规则计算，非结论）</summary><ul><li>独立媒体 1 家（覆盖度 10）</li><li>话题类型「经济金融」（权重 8）</li><li>报道量 1 条（3）</li><li>权威源（Tier-1）1 家（+5）</li></ul></details>
+  <details><summary>全部报道（1 条，点开直达原文）</summary>
+    <ul class="src"><li><a href="https://www.chinanews.com.cn/gj/2026/11-26/10737929.shtml" target="_blank" rel="noreferrer">欧盟对15家俄罗斯实体实施贸易制裁</a><div class="m">中新网·国际 · Tier-1 · 2026-11-26 10:47</div></li></ul>
+  </details>
+</article><article class="card">
+  <div class="chips" style="margin:0 0 8px">
+    <span class="chip lo">低 · 23</span>
+    <span class="chip">南亚</span>
+    <span class="chip">外交关系</span>
+    <span class="chip acc">1 源 / 1 条</span>
+    <span class="chip hi">单源待核实</span>
+  </div>
+  <h3>Bangladesh’s Opposition party blasts Australian media reports over leader’s visit</h3>
+  <div class="quote">“The party said the legal notice sent to The Australian newspaper pointed out ‘seven defamatory imputations and demands corrections, retraction of the report, an apology and the preservation of relevant documents’”<br><em>— The Hindu 原文摘录（点击下方链接看全文）</em></div><div class="meta" style="color:#ffa93c;margin-top:8px">⚠ 仅单一信源，未获多源印证，请点原文核实</div>
+  <details><summary>指标构成（规则计算，非结论）</summary><ul><li>独立媒体 1 家（覆盖度 10）</li><li>话题类型「外交关系」（权重 10）</li><li>报道量 1 条（3）</li></ul></details>
+  <details><summary>全部报道（1 条，点开直达原文）</summary>
+    <ul class="src"><li><a href="https://www.thehindu.com/news/international/bangladeshs-opposition-party-blasts-australian-media-reports-over-leaders-visit/article71749303.ece" target="_blank" rel="noreferrer">Bangladesh’s Opposition party blasts Australian media reports over leader’s visit</a><div class="m">The Hindu · Tier-2 · 2026-11-27 11:29</div></li></ul>
+  </details>
+</article><article class="card">
+  <div class="chips" style="margin:0 0 8px">
+    <span class="chip lo">低 · 23</span>
+    <span class="chip">北美</span>
+    <span class="chip">气候能源</span>
+    <span class="chip acc">1 源 / 1 条</span>
+    <span class="chip hi">单源待核实</span>
+  </div>
+  <h3>Trump says the US has ‘close to 50%’ of world’s oil</h3>
+  <div class="quote">“On a call to soldiers deployed to the Gulf, Donald Trump claimed that the US does not ‘need Middle East oil&#x27;.”<br><em>— Al Jazeera 原文摘录（点击下方链接看全文）</em></div><div class="meta" style="color:#ffa93c;margin-top:8px">⚠ 仅单一信源，未获多源印证，请点原文核实</div>
+  <details><summary>指标构成（规则计算，非结论）</summary><ul><li>独立媒体 1 家（覆盖度 10）</li><li>话题类型「气候能源」（权重 10）</li><li>报道量 1 条（3）</li></ul></details>
+  <details><summary>全部报道（1 条，点开直达原文）</summary>
+    <ul class="src"><li><a href="https://www.aljazeera.com/video/newsfeed/2026/11/27/trump-says-the-us-has-close-to-50-of-worlds-oil?traffic_source=rss" target="_blank" rel="noreferrer">Trump says the US has ‘close to 50%’ of world’s oil</a><div class="m">Al Jazeera · Tier-2 · 2026-11-27 09:44</div></li></ul>
+  </details>
+</article><article class="card">
+  <div class="chips" style="margin:0 0 8px">
+    <span class="chip lo">低 · 23</span>
+    <span class="chip">北美</span>
+    <span class="chip">人道状况</span>
+    <span class="chip acc">1 源 / 1 条</span>
+    <span class="chip hi">单源待核实</span>
+  </div>
+  <h3>消息人士：美国饥荒预警机构因资金短缺将裁员</h3>
+  <div class="meta" style="color:#ffa93c;margin-top:8px">⚠ 仅单一信源，未获多源印证，请点原文核实</div>
+  <details><summary>指标构成（规则计算，非结论）</summary><ul><li>独立媒体 1 家（覆盖度 10）</li><li>话题类型「人道状况」（权重 10）</li><li>报道量 1 条（3）</li></ul></details>
+  <details><summary>全部报道（1 条，点开直达原文）</summary>
+    <ul class="src"><li><a href="https://www.jiemian.com/article/15377710.html" target="_blank" rel="noreferrer">消息人士：美国饥荒预警机构因资金短缺将裁员</a><div class="m">界面新闻 · Tier-2 · 2026-11-26 15:44</div></li></ul>
+  </details>
+</article><article class="card">
+  <div class="chips" style="margin:0 0 8px">
+    <span class="chip lo">低 · 23</span>
+    <span class="chip">北美</span>
+    <span class="chip">公共卫生</span>
+    <span class="chip acc">1 源 / 1 条</span>
+    <span class="chip hi">单源待核实</span>
+  </div>
+  <h3>US CDC reports nine measles-related deaths in 2026</h3>
+  <div class="quote">“Cases in the US have reached a 35-year high.”<br><em>— Straits Times · World 原文摘录（点击下方链接看全文）</em></div><div class="meta" style="color:#ffa93c;margin-top:8px">⚠ 仅单一信源，未获多源印证，请点原文核实</div>
+  <details><summary>指标构成（规则计算，非结论）</summary><ul><li>独立媒体 1 家（覆盖度 10）</li><li>话题类型「公共卫生」（权重 10）</li><li>报道量 1 条（3）</li></ul></details>
+  <details><summary>全部报道（1 条，点开直达原文）</summary>
+    <ul class="src"><li><a href="https://www.straitstimes.com/world/united-states/us-cdc-reports-nine-measles-related-deaths-in-2026" target="_blank" rel="noreferrer">US CDC reports nine measles-related deaths in 2026</a><div class="m">Straits Times · World · Tier-2 · 2026-11-26 07:38</div></li></ul>
+  </details>
+</article><article class="card">
+  <div class="chips" style="margin:0 0 8px">
+    <span class="chip lo">低 · 23</span>
+    <span class="chip">非洲</span>
+    <span class="chip">气候能源</span>
+    <span class="chip acc">1 源 / 1 条</span>
+    <span class="chip hi">单源待核实</span>
+  </div>
+  <h3>Kenya sets foundation for commercialization of oil sector</h3>
+  <div class="quote">“The discovery of commercially viable oil in Turkana County, located in northwestern Kenya in March 2012 marked a major milestone in Kenya&#x27;s petroleum sector. The oil discovery at Ngamia-1, positioning Turkana at the centre of the country&#x27;s ambitions to become an oil-producing nation.”<br><em>— CGTN · World 原文摘录（点击下方链接看全文）</em></div><div class="meta" style="color:#ffa93c;margin-top:8px">⚠ 仅单一信源，未获多源印证，请点原文核实</div>
+  <details><summary>指标构成（规则计算，非结论）</summary><ul><li>独立媒体 1 家（覆盖度 10）</li><li>话题类型「气候能源」（权重 10）</li><li>报道量 1 条（3）</li></ul></details>
+  <details><summary>全部报道（1 条，点开直达原文）</summary>
+    <ul class="src"><li><a href="https://newsaf.cgtn.com/news/2026-11-26/Kenya-sets-foundation-for-commercialization-of-oil-sector-1SmPxcLsOCQ/p.html?UTM_Source=cgtn&amp;UTM_Medium=rss&amp;UTM_Campaign=World" target="_blank" rel="noreferrer">Kenya sets foundation for commercialization of oil sector</a><div class="m">CGTN · World · Tier-2 · 2026-11-26 02:32</div></li></ul>
+  </details>
+</article><article class="card">
+  <div class="chips" style="margin:0 0 8px">
+    <span class="chip lo">低 · 21</span>
+    <span class="chip">全球</span>
+    <span class="chip">经济金融</span>
+    <span class="chip acc">1 源 / 1 条</span>
+    <span class="chip hi">单源待核实</span>
+  </div>
+  <h3>Faster inflation in Tokyo supports case for BOJ rate hike in December</h3>
+  <div class="quote">“The consumer price index excluding fresh food rose 2.9% in November from a year earlier in the capital, the highest level since July 2025, data shows.”<br><em>— Japan Times 原文摘录（点击下方链接看全文）</em></div><div class="meta" style="color:#ffa93c;margin-top:8px">⚠ 仅单一信源，未获多源印证，请点原文核实</div>
+  <details><summary>指标构成（规则计算，非结论）</summary><ul><li>独立媒体 1 家（覆盖度 10）</li><li>话题类型「经济金融」（权重 8）</li><li>报道量 1 条（3）</li></ul></details>
+  <details><summary>全部报道（1 条，点开直达原文）</summary>
+    <ul class="src"><li><a href="https://www.japantimes.co.jp/business/2026/11/27/economy/tokyo-inflation-november/" target="_blank" rel="noreferrer">Faster inflation in Tokyo supports case for BOJ rate hike in December</a><div class="m">Japan Times · Tier-2 · 2026-11-27 10:38</div></li></ul>
+  </details>
+</article><article class="card">
+  <div class="chips" style="margin:0 0 8px">
+    <span class="chip lo">低 · 21</span>
+    <span class="chip">非洲</span>
+    <span class="chip">经济金融</span>
+    <span class="chip acc">1 源 / 1 条</span>
+    <span class="chip hi">单源待核实</span>
+  </div>
+  <h3>Inflation in Sudan: what do the figures conceal?</h3>
+  <div class="quote">“By Suleiman Siri The latest data from Sudan’s Central Bureau of Statistics for October 2026... The post Inflation in Sudan: what do the figures conceal? appeared first on Dabanga Radio TV Online .”<br><em>— Radio Dabanga · Sudan 原文摘录（点击下方链接看全文）</em></div><div class="meta" style="color:#ffa93c;margin-top:8px">⚠ 仅单一信源，未获多源印证，请点原文核实</div>
+  <details><summary>指标构成（规则计算，非结论）</summary><ul><li>独立媒体 1 家（覆盖度 10）</li><li>话题类型「经济金融」（权重 8）</li><li>报道量 1 条（3）</li></ul></details>
+  <details><summary>全部报道（1 条，点开直达原文）</summary>
+    <ul class="src"><li><a href="https://www.dabangasudan.org/en/all-news/article/inflation-in-sudan-what-do-the-figures-conceal" target="_blank" rel="noreferrer">Inflation in Sudan: what do the figures conceal?</a><div class="m">Radio Dabanga · Sudan · Tier-2 · 2026-11-26 19:44</div></li></ul>
+  </details>
+</article><article class="card">
+  <div class="chips" style="margin:0 0 8px">
+    <span class="chip lo">低 · 19</span>
+    <span class="chip">北美</span>
+    <span class="chip">科技产业</span>
+    <span class="chip acc">1 源 / 1 条</span>
+    <span class="chip hi">单源待核实</span>
+  </div>
+  <h3>US approves SpaceX plan for 1 million space data center satellites</h3>
+  <div class="quote">“US approves SpaceX plan for 1 million space data center satellites”<br><em>— CGTN · World 原文摘录（点击下方链接看全文）</em></div><div class="meta" style="color:#ffa93c;margin-top:8px">⚠ 仅单一信源，未获多源印证，请点原文核实</div>
+  <details><summary>指标构成（规则计算，非结论）</summary><ul><li>独立媒体 1 家（覆盖度 10）</li><li>话题类型「科技产业」（权重 6）</li><li>报道量 1 条（3）</li></ul></details>
+  <details><summary>全部报道（1 条，点开直达原文）</summary>
+    <ul class="src"><li><a href="https://news.cgtn.com/news/2026-11-27/US-approves-SpaceX-plan-for-1-million-space-data-center-satellites-1SpaGyCBlHa/p.html?UTM_Source=cgtn&amp;UTM_Medium=rss&amp;UTM_Campaign=World" target="_blank" rel="noreferrer">US approves SpaceX plan for 1 million space data center satellites</a><div class="m">CGTN · World · Tier-2 · 2026-11-27 09:30</div></li></ul>
+  </details>
+</article><article class="card">
+  <div class="chips" style="margin:0 0 8px">
+    <span class="chip lo">低 · 19</span>
+    <span class="chip">亚太</span>
+    <span class="chip">科技产业</span>
+    <span class="chip acc">1 源 / 1 条</span>
+    <span class="chip hi">单源待核实</span>
+  </div>
+  <h3>South Korea’s central bank hikes interest rates amid AI chip boom</h3>
+  <div class="quote">“Bank of Korea raises key rate by 0.25 percent amid booming exports of semiconductors.”<br><em>— Al Jazeera 原文摘录（点击下方链接看全文）</em></div><div class="meta" style="color:#ffa93c;margin-top:8px">⚠ 仅单一信源，未获多源印证，请点原文核实</div>
+  <details><summary>指标构成（规则计算，非结论）</summary><ul><li>独立媒体 1 家（覆盖度 10）</li><li>话题类型「科技产业」（权重 6）</li><li>报道量 1 条（3）</li></ul></details>
+  <details><summary>全部报道（1 条，点开直达原文）</summary>
+    <ul class="src"><li><a href="https://www.aljazeera.com/economy/2026/11/26/south-koreas-central-bank-hikes-interest-rates-raises-gdp-growth-forecast?traffic_source=rss" target="_blank" rel="noreferrer">South Korea’s central bank hikes interest rates amid AI chip boom</a><div class="m">Al Jazeera · Tier-2 · 2026-11-26 13:49</div></li></ul>
+  </details>
+</article>
+
+<h2 id="compare">媒体对照</h2>
+<div class="note" style="margin-bottom:10px">同一事件下并列各家原文标题，不做翻译改写、不做倾向评判，由你自己判断差异。</div>
+<article class="card">
+  <div class="meta">全球 · 13 家媒体同题报道</div>
+  <h3 style="font-size:14px">Yemeni army reports clashes 80 kilometers from Sanaa as casualties exceed 13,000 since August…</h3>
+  <ul class="src"><li><span class="m">Anadolu · English（en）</span><br><a href="https://www.aa.com.tr/en/middle-east/yemeni-army-reports-clashes-80-kilometers-from-sanaa-as-casualties-exceed-13-000-since-august/4139629" target="_blank" rel="noreferrer">Yemeni army reports clashes 80 kilometers from Sanaa as casualties exceed 13,000 since August</a></li><li><span class="m">TASS · English（en）</span><br><a href="https://tass.com/world/2225011" target="_blank" rel="noreferrer">UK calls on reservists to volunteer for military exercises for first time since Cold War</a></li><li><span class="m">BBC World（en）</span><br><a href="https://www.bbc.co.uk/news/articles/cqvg2nlr8kd8o?at_medium=RSS&amp;at_campaign=rss" target="_blank" rel="noreferrer">Met Police ruined my life, says Kenyan man wrongly sentenced over attack on UK couple</a></li><li><span class="m">TASS · English（en）</span><br><a href="https://tass.com/emergencies/2225599" target="_blank" rel="noreferrer">Four killed, six wounded in Ukrainian drone attacks on DPR in past day</a></li><li><span class="m">Anadolu · English（en）</span><br><a href="https://www.aa.com.tr/en/middle-east/sudanese-army-says-it-shoots-down-drone-in-south-kordofan/4138167" target="_blank" rel="noreferrer">Sudanese army says it shoots down drone in South Kordofan</a></li><li><span class="m">Korea Herald（en）</span><br><a href="https://www.koreaherald.com/article/10951684" target="_blank" rel="noreferrer">N. Korean troops cross inter-Korean border about 40 times over past 2 months: lawmaker</a></li></ul>
+</article><article class="card">
+  <div class="meta">欧洲 · 12 家媒体同题报道</div>
+  <h3 style="font-size:14px">伊朗否认袭击科威特致两意大利人死亡 提议三国联合调查…</h3>
+  <ul class="src"><li><span class="m">中新网·国际（zh）</span><br><a href="https://www.chinanews.com.cn/gj/2026/11-27/10738565.shtml" target="_blank" rel="noreferrer">伊朗否认袭击科威特致两意大利人死亡 提议三国联合调查</a></li><li><span class="m">中新网·国际（zh）</span><br><a href="https://www.chinanews.com.cn/gj/2026/11-27/10738507.shtml" target="_blank" rel="noreferrer">2名意籍工程师遇袭身亡，中东冲突波及到了普通欧洲民众</a></li><li><span class="m">中新网·国际（zh）</span><br><a href="https://www.chinanews.com.cn/gj/2026/11-27/10738482.shtml" target="_blank" rel="noreferrer">科威特称伊朗袭击该国致两名意大利人身亡，伊朗否认</a></li><li><span class="m">中新网·国际（zh）</span><br><a href="https://www.chinanews.com.cn/gj/2026/11-26/10738469.shtml" target="_blank" rel="noreferrer">两名意大利公民在伊朗无人机袭击科威特事件中身亡</a></li><li><span class="m">CGTN · World（zh）</span><br><a href="https://news.cgtn.com/news/2026-11-26/Meloni-talks-tough-on-EU-budget-warns-of-Ukraine-conflict-spillover-1SoqyfmquGI/p.html?UTM_Source=cgtn&amp;UTM_Medium=rss&amp;UTM_Campaign=World" target="_blank" rel="noreferrer">Meloni talks tough on EU budget, warns of Ukraine conflict spillover</a></li><li><span class="m">TASS · English（en）</span><br><a href="https://tass.com/politics/2225641" target="_blank" rel="noreferrer">Victims of EU-Kiev ‘drone coalition’ account for 90% of all civilian casualties — diplomat</a></li></ul>
+</article><article class="card">
+  <div class="meta">非洲 · 4 家媒体同题报道</div>
+  <h3 style="font-size:14px">Libya’s Presidential Council head calls for probe into Benghazi port attack…</h3>
+  <ul class="src"><li><span class="m">TASS · English（en）</span><br><a href="https://tass.com/world/2225579" target="_blank" rel="noreferrer">Libya’s Presidential Council head calls for probe into Benghazi port attack</a></li><li><span class="m">BBC World（en）</span><br><a href="https://www.bbc.co.uk/news/articles/ck62y23z58yeo?at_medium=RSS&amp;at_campaign=rss" target="_blank" rel="noreferrer">As foreign troops withdraw from Somalia, could al-Shabab take over?</a></li><li><span class="m">Japan Times（en）</span><br><a href="https://www.japantimes.co.jp/news/2026/11/26/world/africa-insurgents-war-drones/" target="_blank" rel="noreferrer">African insurgents take war to the skies with off-the-shelf drones</a></li><li><span class="m">Al Jazeera（en）</span><br><a href="https://www.aljazeera.com/news/2026/11/27/at-least-13-niger-soldiers-killed-in-sanam-armed-attack?traffic_source=rss" target="_blank" rel="noreferrer">At least 13 Niger soldiers killed in Sanam armed attack</a></li><li><span class="m">Al Jazeera（en）</span><br><a href="https://www.aljazeera.com/features/2026/11/26/war-and-drought-threaten-livelihoods-of-sudans-farmers?traffic_source=rss" target="_blank" rel="noreferrer">War and drought threaten livelihoods of Sudan’s farmers</a></li></ul>
+</article><article class="card">
+  <div class="meta">中东 · 9 家媒体同题报道</div>
+  <h3 style="font-size:14px">也门胡塞武装称袭击沙特两个港口…</h3>
+  <ul class="src"><li><span class="m">中新网·国际（zh）</span><br><a href="https://www.chinanews.com.cn/gj/2026/11-26/10737995.shtml" target="_blank" rel="noreferrer">也门胡塞武装称袭击沙特两个港口</a></li><li><span class="m">CBC · World（en）</span><br><a href="https://www.cbc.ca/news/world/italian-workers-killed-kuwait-iran-strike-9.7437089?cmp=rss" target="_blank" rel="noreferrer">Iran denies involvement after 2 Italian technicians killed in attack on Kuwait site</a></li><li><span class="m">Anadolu · English（en）</span><br><a href="https://www.aa.com.tr/en/middle-east/syria-expresses-solidarity-with-kuwait-following-drone-attacks-blamed-on-iran/4139868" target="_blank" rel="noreferrer">Syria expresses solidarity with Kuwait following drone attacks blamed on Iran</a></li><li><span class="m">TASS · English（en）</span><br><a href="https://tass.com/world/2225555" target="_blank" rel="noreferrer">Iran offers Kuwait joint investigation into drone attack — foreign ministry</a></li><li><span class="m">TASS · English（en）</span><br><a href="https://tass.com/world/2224889" target="_blank" rel="noreferrer">Houthi attack causes minor damage to Saudi port of Jizan — coalition</a></li><li><span class="m">TASS · English（en）</span><br><a href="https://tass.com/world/2225595" target="_blank" rel="noreferrer">One person killed in Houthi attack on Saudi refinery</a></li></ul>
+</article><article class="card">
+  <div class="meta">全球 · 12 家媒体同题报道</div>
+  <h3 style="font-size:14px">埃及吉萨省车祸引发火灾 烧毁27辆车致31人死亡…</h3>
+  <ul class="src"><li><span class="m">中新网·国际（zh）</span><br><a href="https://www.chinanews.com.cn/gj/2026/11-26/10737865.shtml" target="_blank" rel="noreferrer">埃及吉萨省车祸引发火灾 烧毁27辆车致31人死亡</a></li><li><span class="m">BBC World（en）</span><br><a href="https://www.bbc.co.uk/news/articles/cqwy4377yxnlo?at_medium=RSS&amp;at_campaign=rss" target="_blank" rel="noreferrer">Guinea orders residents to clean up the capital months after deadly rubbish dump collapse</a></li><li><span class="m">BBC World（en）</span><br><a href="https://www.bbc.co.uk/news/articles/c3gre90l0g45o?at_medium=RSS&amp;at_campaign=rss" target="_blank" rel="noreferrer">Egyptian authorities arrest motorist over tanker crash that killed 31</a></li><li><span class="m">ABC Australia（en）</span><br><a href="https://www.abc.net.au/news/2026-11-26/lidcombe-attempted-kidnapping-men-charged-amid-further-arrests/107430090" target="_blank" rel="noreferrer">Witness recounts dramatic &#x27;crash tackle&#x27; arrest of balaclava-clad men</a></li><li><span class="m">BBC World（en）</span><br><a href="https://www.bbc.co.uk/news/articles/crx209kwk4kzo?at_medium=RSS&amp;at_campaign=rss" target="_blank" rel="noreferrer">Nine injured, three critically, after Bangkok oil refinery explosion</a></li><li><span class="m">Anadolu · English（en）</span><br><a href="https://www.aa.com.tr/en/middle-east/explosion-reported-near-tanker-west-of-dubai-uk-maritime-agency/4138116" target="_blank" rel="noreferrer">Explosion reported near tanker west of Dubai: UK maritime agency</a></li></ul>
+</article><article class="card">
+  <div class="meta">北美 · 5 家媒体同题报道</div>
+  <h3 style="font-size:14px">US envoy says largest prisoner swap of Russia-Ukraine war to take place &#x27;very soon, before the holidays&#x27;…</h3>
+  <ul class="src"><li><span class="m">Anadolu · English（en）</span><br><a href="https://www.aa.com.tr/en/russia-ukraine-war/us-envoy-says-largest-prisoner-swap-of-russia-ukraine-war-to-take-place-very-soon-before-the-holidays/4138130" target="_blank" rel="noreferrer">US envoy says largest prisoner swap of Russia-Ukraine war to take place &#x27;very soon, before the holidays&#x27;</a></li><li><span class="m">TASS · English（en）</span><br><a href="https://tass.com/world/2224983" target="_blank" rel="noreferrer">NATO expects US to postpone decision on withdrawing troops from Europe — news agency</a></li><li><span class="m">TASS · English（en）</span><br><a href="https://tass.com/world/2224967" target="_blank" rel="noreferrer">Ukrainian crisis turns into proxy war between Europe, Russia — US envoy</a></li><li><span class="m">TASS · English（en）</span><br><a href="https://tass.com/world/2225549" target="_blank" rel="noreferrer">US President Trump still hopes Ukraine conflict can be resolved soon</a></li><li><span class="m">Middle East Eye（en）</span><br><a href="https://www.middleeasteye.net/live-blog/live-blog-update/israel-army-spokesperson-says-its-ready-attack-iran-force-without-us" target="_blank" rel="noreferrer">Israeli army spokesperson says it’s ready to attack Iran &#x27;with force&#x27; without US backing</a></li><li><span class="m">Dawn · Pakistan（en）</span><br><a href="https://www.dawn.com/news/2047188/ten-events-that-defined-2026-from-middle-east-war-to-gen-z-protests-and-ai-doom" target="_blank" rel="noreferrer">Ten events that defined 2026 from Middle East war to Gen Z protests and AI doom</a></li></ul>
+</article><article class="card">
+  <div class="meta">全球 · 7 家媒体同题报道</div>
+  <h3 style="font-size:14px">特朗普与吕特会晤，喊话俄“避免扩大战事”…</h3>
+  <ul class="src"><li><span class="m">界面新闻（zh）</span><br><a href="https://www.jiemian.com/article/15377522.html" target="_blank" rel="noreferrer">特朗普与吕特会晤，喊话俄“避免扩大战事”</a></li><li><span class="m">Anadolu · English（en）</span><br><a href="https://www.aa.com.tr/en/americas/chilean-public-sector-unions-call-for-nationwide-protests-over-layoffs-stalled-government-talks/4139865" target="_blank" rel="noreferrer">Chilean public sector unions call for nationwide protests over layoffs, stalled government talks</a></li><li><span class="m">TASS · English（en）</span><br><a href="https://tass.com/world/2225473" target="_blank" rel="noreferrer">Chances of agreeing EU budget at Brussels summit equal zero — Hungarian Prime Minister</a></li><li><span class="m">TASS · English（en）</span><br><a href="https://tass.com/world/2225625" target="_blank" rel="noreferrer">EU countries fail to reach agreement on any of three key elements of budget — Costa</a></li><li><span class="m">TASS · English（en）</span><br><a href="https://tass.com/world/2225609" target="_blank" rel="noreferrer">EU summit fails to approve additional 45-billion-euro financial aid to Kiev — Costa</a></li><li><span class="m">BBC World（en）</span><br><a href="https://www.bbc.co.uk/news/articles/c98r7p65edvgo?at_medium=RSS&amp;at_campaign=rss" target="_blank" rel="noreferrer">New UK-EU treaty has 10-year termination clause</a></li></ul>
+</article><article class="card">
+  <div class="meta">欧洲 · 7 家媒体同题报道</div>
+  <h3 style="font-size:14px">特朗普：与普京会谈中，已敦促其尽快与乌克兰达成协议…</h3>
+  <ul class="src"><li><span class="m">中新网·国际（zh）</span><br><a href="https://www.chinanews.com.cn/gj/2026/11-27/10738478.shtml" target="_blank" rel="noreferrer">特朗普：与普京会谈中，已敦促其尽快与乌克兰达成协议</a></li><li><span class="m">中新网·国际（zh）</span><br><a href="https://www.chinanews.com.cn/gj/2026/11-27/10738474.shtml" target="_blank" rel="noreferrer">特朗普：在与普京会谈中敦促其尽快与乌克兰达成协议</a></li><li><span class="m">界面新闻（zh）</span><br><a href="https://www.jiemian.com/article/15377700.html" target="_blank" rel="noreferrer">中国国防部长访问意大利、英国深化战略互信</a></li><li><span class="m">界面新闻（zh）</span><br><a href="https://www.jiemian.com/article/15377530.html" target="_blank" rel="noreferrer">欧佩克秘书长指责欧盟阻碍气候谈判</a></li><li><span class="m">TASS · English（en）</span><br><a href="https://tass.com/world/2225629" target="_blank" rel="noreferrer">Second day of EU summit cancelled after talks on budget, aid to Kiev fail — source</a></li><li><span class="m">TASS · English（en）</span><br><a href="https://tass.com/world/2224897" target="_blank" rel="noreferrer">EU sets energy truce, Black Sea deal as terms for Russia talks — EC</a></li></ul>
+</article>
+
+<h2 id="audit">数据审计</h2>
+<table><thead><tr><th>信源</th><th>状态</th><th>条数</th><th>耗时</th></tr></thead>
+<tbody><tr><td>新华网·国际</td><td class='bad'>HTTP 502</td><td>0</td><td>9.0s</td></tr><tr><td>人民网·国际</td><td class='bad'>HTTP 502</td><td>0</td><td>10.0s</td></tr><tr><td>中新网·国际</td><td class='ok'>ok</td><td>30</td><td>5.0s</td></tr><tr><td>界面新闻</td><td class='ok'>ok</td><td>30</td><td>0.5s</td></tr><tr><td>BBC 中文</td><td class='ok'>ok</td><td>42</td><td>8.8s</td></tr><tr><td>BBC World</td><td class='ok'>ok</td><td>31</td><td>0.6s</td></tr><tr><td>Al Jazeera</td><td class='ok'>ok</td><td>25</td><td>1.4s</td></tr><tr><td>NPR World</td><td class='ok'>ok</td><td>10</td><td>1.4s</td></tr><tr><td>Daily Trust · Nigeria</td><td class='ok'>ok</td><td>14</td><td>1.5s</td></tr><tr><td>HumAngle · Nigeria</td><td class='ok'>ok</td><td>10</td><td>3.2s</td></tr><tr><td>Dawn · Pakistan</td><td class='ok'>ok</td><td>28</td><td>1.4s</td></tr><tr><td>Kabul Now · Afghanistan</td><td class='ok'>ok</td><td>12</td><td>9.0s</td></tr><tr><td>Long War Journal</td><td class='ok'>ok</td><td>30</td><td>1.5s</td></tr><tr><td>Premium Times · Nigeria</td><td class='ok'>ok</td><td>15</td><td>3.0s</td></tr><tr><td>Radio Dabanga · Sudan</td><td class='ok'>ok</td><td>12</td><td>2.8s</td></tr><tr><td>Rappler · Philippines</td><td class='ok'>ok</td><td>10</td><td>3.4s</td></tr><tr><td>UN News · Peace &amp; Security</td><td class='ok'>ok</td><td>30</td><td>2.2s</td></tr><tr><td>CNN · World</td><td class='ok'>ok</td><td>29</td><td>1.8s</td></tr><tr><td>NYT · World</td><td class='ok'>ok</td><td>60</td><td>2.8s</td></tr><tr><td>Washington Post · World</td><td class='ok'>ok</td><td>15</td><td>9.7s</td></tr><tr><td>DW · English</td><td class='ok'>ok</td><td>12</td><td>2.2s</td></tr><tr><td>Sky News · World</td><td class='ok'>ok</td><td>9</td><td>3.8s</td></tr><tr><td>Politico EU</td><td class='ok'>ok</td><td>10</td><td>1.0s</td></tr><tr><td>RFI · English</td><td class='ok'>ok</td><td>22</td><td>1.1s</td></tr><tr><td>Straits Times · World</td><td class='ok'>ok</td><td>50</td><td>1.1s</td></tr><tr><td>Japan Times</td><td class='ok'>ok</td><td>30</td><td>2.4s</td></tr><tr><td>Korea Herald</td><td class='ok'>ok</td><td>50</td><td>7.7s</td></tr><tr><td>ABC Australia</td><td class='ok'>ok</td><td>25</td><td>6.9s</td></tr><tr><td>The Hindu</td><td class='ok'>ok</td><td>60</td><td>0.8s</td></tr><tr><td>Tehran Times</td><td class='ok'>ok</td><td>30</td><td>1.3s</td></tr><tr><td>Middle East Eye</td><td class='ok'>ok</td><td>20</td><td>1.4s</td></tr><tr><td>Anadolu · English</td><td class='ok'>ok</td><td>30</td><td>3.1s</td></tr><tr><td>Mada Masr · Egypt</td><td class='ok'>ok</td><td>10</td><td>1.3s</td></tr><tr><td>The Africa Report</td><td class='ok'>ok</td><td>10</td><td>0.8s</td></tr><tr><td>African Arguments</td><td class='ok'>ok</td><td>10</td><td>1.1s</td></tr><tr><td>Moscow Times</td><td class='ok'>ok</td><td>50</td><td>0.8s</td></tr><tr><td>TASS · English</td><td class='ok'>ok</td><td>60</td><td>1.6s</td></tr><tr><td>CBC · World</td><td class='ok'>ok</td><td>20</td><td>0.6s</td></tr><tr><td>El País · English</td><td class='ok'>ok</td><td>57</td><td>2.0s</td></tr><tr><td>Global Voices</td><td class='ok'>ok</td><td>15</td><td>3.2s</td></tr><tr><td>CGTN · World</td><td class='ok'>ok</td><td>50</td><td>0.6s</td></tr><tr><td>新浪 · 国际</td><td class='ok'>ok</td><td>15</td><td>0.3s</td></tr><tr><td>澎湃 · feedx</td><td class='ok'>ok</td><td>20</td><td>1.7s</td></tr><tr><td>明报 · 新闻</td><td class='ok'>ok</td><td>26</td><td>5.9s</td></tr><tr><td>人民网 · 英文</td><td class='ok'>ok</td><td>35</td><td>0.3s</td></tr><tr><td>Global Times</td><td class='ok'>ok</td><td>50</td><td>0.6s</td></tr></tbody></table>
+
+<h2 id="method">方法与免责</h2>
+<div class="note">
+<b>1. 内容怎么来的</b>：程序直接读取各媒体公开 RSS，只做「标题聚合 + 首段摘录」，不生成原文没有的说法，不做机器翻译，不做倾向改写。<br>
+<b>2. 风险指数是什么</b>：由「独立媒体数、话题严重度、标题伤亡/规模词、报道量、是否出现相反叙事、权威源数量」六项按固定公式相加得出，满分 100。它是<b>报道强度指标</b>，不是事实判断，也不是预测。<br>
+<b>3. 可信度怎么标</b>：只有一家媒体报道的事件标「未获多源印证」；Tier-1 指通讯社/公共广播等一级源，Tier-2 指主流市场化媒体。二者都可能是错的，请以原文为准。<br>
+<b>4. 覆盖边界</b>：本报告只覆盖国际公共事务（灾害、冲突、经济、气候、卫生、科技、事故、人道），不覆盖政治敏感议题；抓取失败的源会在上表列出，不隐藏缺口。<br>
+<b>5. 结论由谁下</b>：程序不下结论。任何判断请回到原始链接。<br>
+<b>6. 可信度分级</b>：三源以上（或含 Tier-1）为「三源以上印证」，双源为「双源报道」，单源为「单源待核实」。分级只数"有几家独立媒体说了"，不代表内容为真。
+</div>
+
+<div class="foot">
+世界脉搏 · 本机运行 · 报告为机器聚合产物<br>
+2026-11-27 生成 · 共 46 个信源 · 208 条报道 · 41 起事件
+</div>
+</div>
+<script>
+if ('serviceWorker' in navigator && location.protocol === 'https:' || location.hostname === 'localhost') {
+  navigator.serviceWorker.register('sw.js').catch(function(){});
+}
+</script>
+</body></html>
